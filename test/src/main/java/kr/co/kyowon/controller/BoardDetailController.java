@@ -1,7 +1,5 @@
 package kr.co.kyowon.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +20,8 @@ public class BoardDetailController {
 	}
 	
 	@GetMapping("/board/detail")
-	public String detail(Model model, @RequestParam Long title) {
-		List<BoardDao> boardDaoList = boardService.getBoardDetail(title);
+	public String detail(Model model, @RequestParam Long seq) {
+		BoardDao boardDaoList = boardService.getBoardDetail(seq);
 		model.addAttribute("board", boardDaoList);
 		return "board/detail";
 	}

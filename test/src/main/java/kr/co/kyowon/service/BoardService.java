@@ -49,23 +49,19 @@ public class BoardService {
 	
 	// 게시물 상세내역 조회
 	@Transactional
-	public List<BoardDao> getBoardDetail(Long title) {
-		Optional<Board> boardList = boardRepository.findById(title);
-		List<BoardDao> boardDaoList = new ArrayList<>();
+	public BoardDao getBoardDetail(Long seq) {
+		Board board = boardRepository.findById(seq).get();
 		
-		for(Board board : Board) {
-			BoardDao boardDao = BoardDao.builder()
-					.seq(board.getSeq())
-					.title(board.getTitle())
-					.writer(board.getWriter())
-					.content(board.getContent())
-					.createDate(board.getCreateDate())
-					.cnt(board.getCnt())
-					.build();
-			boardDaoList.add(boardDao);
-		}
+		BoardDao boardDao = BoardDao.builder()
+				.seq(board.getSeq())
+				.title(board.getTitle())
+				.writer(board.getWriter())
+				.content(board.getContent())
+				.createDate(board.getCreateDate())
+				.cnt(board.getCnt())
+				.build();
 		
-		return boardDaoList;
+		return boardDao;
 		
 	}
 	

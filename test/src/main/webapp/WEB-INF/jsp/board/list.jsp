@@ -22,12 +22,12 @@
     	</tr>
 	    <c:forEach var="item" items="${board}">
 	    	<tr>
-		    	<td>${item.seq}</td>
-	    		<td>
-					<a href="/board/detail?title=${item.title}">
-			    		${item.title}
+		    	<td>
+					<a href="/board/detail?seq=${item.seq}">
+				    	${item.seq}
 					</a>
-	    		</td>
+		    	</td>
+	    		<td>${item.title}</td>
 		    	<td>${item.writer}</td>
 		    	<td>${item.content}</td>
 		    	<td>${item.createDate}</td>
