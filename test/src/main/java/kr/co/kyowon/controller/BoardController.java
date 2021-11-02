@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.kyowon.dao.BoardDao;
 import kr.co.kyowon.service.BoardService;
@@ -34,4 +36,24 @@ public class BoardController {
 		boardService.savePost(boardDao);
 		return "board/post";
 	}
+	
+	@GetMapping("/board/edit")
+	public String edit(@RequestParam Long seq, Model model) {
+		BoardDao boardDao = boardService.getBoardEdit(seq);
+		model.addAttribute("board", boardDao);
+		return "board/edit";
+	}
+	
+	@PostMapping("/board/edit")
+	public String update(BoardDao boardDao) {
+		boardService.savePost(boardDao);
+		return "board/list";
+	}
+	
+	@PostMapping("/board/delete")
+	public String delete(@RequestParam Long seq) {
+		boardService.boardDelete(seq);
+		return "board/list";
+	}
+	
 }

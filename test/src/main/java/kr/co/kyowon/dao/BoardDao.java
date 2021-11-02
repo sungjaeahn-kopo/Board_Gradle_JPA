@@ -16,6 +16,7 @@ public class BoardDao {
 	private String writer;
 	private String content;
 	private Date createDate;
+	private Date updateDate;
 	private Long cnt;
 	
 	public Board toEntity() {
@@ -25,18 +26,20 @@ public class BoardDao {
 				.writer(writer)
 				.content(content)
 				.createDate(createDate)
+				.updateDate(createDate)
 				.cnt(cnt)
 				.build();
 		return build;
 	}
 	
     @Builder
-    public BoardDao(Long seq, String title, String writer, String content, Date createDate, Long cnt) {
+    public BoardDao(Long seq, String title, String writer, String content, Date createDate, Date updateDate, Long cnt) {
     	this.seq = seq;
     	this.title = title;
     	this.writer = writer;
     	this.content = content;
     	this.createDate = createDate;
+    	this.updateDate = createDate;
     	this.cnt = cnt;
     }
 	

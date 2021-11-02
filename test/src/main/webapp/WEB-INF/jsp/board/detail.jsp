@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 상세 페이지</title>
 </head>
 <body>
 <div class="container">
@@ -18,10 +18,10 @@
     <div class="row mt-3">
         <div class="col-auto mr-auto"></div>
         <div class="col-auto">
-            <a class="btn btn-info" role="button">수정</a>
+            <a class="btn btn-info" href="/board/edit?seq=${board.seq}" role="button">수정</a>
         </div>
         <div class="col-auto">
-            <form id="delete-form" action="/post/ + ${board.seq}" method="post">
+            <form id="delete-form" action="/board/delete?seq=${board.seq}" method="post">
                 <input type="hidden" name="_method" value="delete"/>
                 <button id="delete-btn" type="submit" class="btn btn-danger">삭제</button>
             </form>

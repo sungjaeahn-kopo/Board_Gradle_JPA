@@ -11,6 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -41,17 +42,22 @@ public class Board {
     @CreatedDate
     @Column(updatable = false, nullable=true, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     private Date createDate;
+ 
+    @LastModifiedDate
+    @Column(updatable = false, nullable=true, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
+    private Date updateDate;
 
     @Column(insertable=false, nullable=false, columnDefinition = "bigint(20) default 0")                         
     private Long cnt;
 
     @Builder
-    public Board(Long seq, String title, String writer, String content, Date createDate, Long cnt) {
+    public Board(Long seq, String title, String writer, String content, Date createDate, Date updateDate, Long cnt) {
     	this.seq = seq;
     	this.title = title;
     	this.writer = writer;
     	this.content = content;
     	this.createDate = createDate;
+    	this.updateDate = updateDate;
     	this.cnt = cnt;
     }
     
