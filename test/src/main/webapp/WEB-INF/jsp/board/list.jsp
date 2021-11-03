@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="container" style="margin : 100px;">
+<div class="container" style="margin : 200px;">
     hello<br><br>
     <table border="1">
     	<tr>
@@ -32,8 +32,22 @@
 		    	<td>${item.writer}</td>
 		    	<td>${item.content}</td>
 		    	<td>${item.createDate}</td>
-		    	<td>${item.updateDate}</td>
+		    	<c:choose>
+		    		<c:when test="${item.createDate ne item.updateDate}">
+		    			<td>${item.updateDate}</td>
+		    		</c:when>
+		    		<c:otherwise>
+				    	<td></td>
+		    		</c:otherwise>
+		    	</c:choose>
 		    	<td>${item.cnt}</td>
+<%-- 		    	<c:if test="${item.createDate ne item.updateDate}"> --%>
+<%-- 			    	<td>${item.updateDate}</td> --%>
+<%-- 		    	</c:if> --%>
+<%-- 		    	<c:if test="${item.createDate eq item.updateDate}"> --%>
+<!-- 			    	<td></td> -->
+<%-- 		    	</c:if> --%>
+<%-- 	    		<td>${item.cnt}</td> --%>
 	    	</tr>
 	    </c:forEach>
     </table>

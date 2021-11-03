@@ -1,4 +1,8 @@
 spring:
+  data:    web:
+      pageable:
+        default-page-size: 10
+        one-indexed-parameters: true
   datasource:
     url: jdbc:mariadb://localhost:3306/test
     driver-class-name: org.mariadb.jdbc.Driver

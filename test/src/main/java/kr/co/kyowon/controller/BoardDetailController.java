@@ -21,8 +21,10 @@ public class BoardDetailController {
 	
 	@GetMapping("/board/detail")
 	public String detail(Model model, @RequestParam Long seq) {
+		boardService.updateView(seq);
 		BoardDao boardDaoList = boardService.getBoardDetail(seq);
 		model.addAttribute("board", boardDaoList);
+		System.out.println("DB 후 , 조회수 : " + boardDaoList.getCnt());
 		return "board/detail";
 	}
 	

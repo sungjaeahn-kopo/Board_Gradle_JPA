@@ -2,10 +2,11 @@ package kr.co.kyowon.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import kr.co.kyowon.dao.BoardDao;
@@ -38,6 +39,11 @@ public class BoardService {
 	
 	@Transactional
 	public Long savePost(BoardDao boardDao) {
+		System.out.println("===boardDao.toEntity().getSeq()===" + boardDao.toEntity().getSeq());
+		System.out.println("===boardDao.toEntity().getTitle()===" + boardDao.toEntity().getTitle());
+		System.out.println("===boardDao.toEntity().getWriter()===" + boardDao.toEntity().getWriter());
+		System.out.println("===boardDao.toEntity().getContent()===" + boardDao.toEntity().getContent());
+		System.out.println("===boardDao.toEntity().getCnt()===" + boardDao.toEntity().getCnt());
 		return boardRepository.save(boardDao.toEntity()).getSeq();
 	}
 	
@@ -67,32 +73,14 @@ public class BoardService {
 	@Transactional
 	public BoardDao getBoardDetail(Long seq) {
 		Board board = boardRepository.findById(seq).get();
-		
 		BoardDao boardDao = BoardDao.builder()
 				.seq(board.getSeq())
 				.title(board.getTitle())
 				.writer(board.getWriter())
 				.content(board.getContent())
 				.createDate(board.getCreateDate())
-				.cnt(board.getCnt())
-				.build();
-		
-		return boardDao;
-	}
-	
-	// 게시물 수정
-	@Transactional
-	public BoardDao getBoardEdit(Long seq) {
-		Board board = boardRepository.findById(seq).get();
-		
-		BoardDao boardDao = BoardDao.builder()
-//				.seq(board.getSeq())
-				.title(board.getTitle())
-				.writer(board.getWriter())
-				.content(board.getContent())
-				.createDate(board.getCreateDate())
 				.updateDate(board.getUpdateDate())
-//				.cnt(board.getCnt())
+				.cnt(board.getCnt())
 				.build();
 		
 		return boardDao;
@@ -104,5 +92,15 @@ public class BoardService {
 		boardRepository.deleteById(seq);
 	}
 	
+	// 조회수 증가
+	@Transactional
+	public void updateView(Long seq) {
+		boardRepository.updateView(seq);
+	}
+	
+	@Transactional
+	public Page<Board> list(Pageable pageable) {
+		return boardRepository.findAll(pageable);
+	}
 	
 }

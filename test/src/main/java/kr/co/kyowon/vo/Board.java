@@ -1,5 +1,6 @@
 package kr.co.kyowon.vo;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -28,6 +29,7 @@ public class Board {
 
     @Id
     @GeneratedValue
+    // primary key
     private Long seq;
     
     @Column(length = 20, nullable = false)
@@ -39,19 +41,25 @@ public class Board {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    // 211103 09:37 datatype : date => LocalDateTime
+    // Entity가 생성되어 저장시 시간 자동저장
     @CreatedDate
     @Column(updatable = false, nullable=true, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
-    private Date createDate;
+    private LocalDateTime createDate;
  
+    // 211103 09:37 datatype : date => LocalDateTime
+    // 조회한 entity 값 변경시 시간 자동저장
     @LastModifiedDate
-    @Column(updatable = false, nullable=true, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
-    private Date updateDate;
+    @Column(nullable=true, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
+    private LocalDateTime updateDate;
 
-    @Column(insertable=false, nullable=false, columnDefinition = "bigint(20) default 0")                         
+    @Column(nullable=true, columnDefinition = "default 0")
     private Long cnt;
+    
+    
 
     @Builder
-    public Board(Long seq, String title, String writer, String content, Date createDate, Date updateDate, Long cnt) {
+    public Board(Long seq, String title, String writer, String content, LocalDateTime createDate, LocalDateTime updateDate, Long cnt) {
     	this.seq = seq;
     	this.title = title;
     	this.writer = writer;
