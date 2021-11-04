@@ -14,10 +14,10 @@ public class HomeController extends WebMvcConfigurerAdapter {
 		registry.addViewController("/home").setViewName("home");
 	}
 	
-	@GetMapping("/")
-	public String home(Model model) {
-		model.addAttribute("name","name 입니다");
-		return "home";
-	}
-	
+//	@GetMapping("/")
+//	public String home(Model model) {
+//		model.addAttribute("name","name 입니다");
+//		return "board/list";
+//	}
+//	
 }

@@ -8,7 +8,6 @@
 <title>board</title>
 </head>
 <body>
-
 <div class="container">
     hello
     <table border="1">

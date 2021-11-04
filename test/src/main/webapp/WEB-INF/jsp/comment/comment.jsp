@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 리스트 페이지</title>
+<title>댓글 리스트 페이지</title>
 </head>
+
+
+
 <body>
 <div class="container" style="margin : 200px;">
-    hello<br><br>
+    답글<br><br>
     <table border="1">
     	<tr>
     		<th>일련번호</th>
@@ -20,7 +23,7 @@
     		<th>수정일자</th>
     		<th>조회수</th>
     	</tr>
-	    <c:forEach var="item" items="${board}">
+	    <c:forEach var="item" items="${comment}">
 	    	<tr>
 		    	<td>
 					<a href="/board/detail?seq=${item.seq}">

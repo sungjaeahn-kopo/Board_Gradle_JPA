@@ -7,7 +7,6 @@
 <title>게시글 수정 페이지</title>
 </head>
 <body>
-
 <div class="container">
     <form action="/board/edit?seq=${board.seq}" method="post">
         <input type="hidden" name="_method" value="post "/>
