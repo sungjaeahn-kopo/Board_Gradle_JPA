@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,11 +31,13 @@
         </div>
     </div>
 </div>
-<div class="container">
-	<label for="content">comment</label>
+
+<!-- 댓글 -->
+<div class="container" style="margin : 50px;">
+	<label for="content">Comments</label>
 	<form name="commentInsertForm">
 		<div class="input-group">
-			<input type="hidden" name="seq" value=""/>
+			<input type="hidden" name="seq" value="${board.seq}"/>
 			<input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요."/>
 			<span class="input-group-btn">
 				<button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
@@ -42,9 +45,15 @@
 		</div>
 	</form>
 </div>
+<%-- <c:import url="/comment/comment"> --%>
+<%-- 	<c:param name="seq" value="${board.seq}"/> --%>
+<%-- </c:import> --%>
 <div class="container">
-	<div class="commentList"></div>
+	<div class="commentList">
+		<a href="javascript:commentList()">aa</a>
+		<a href="/comment/comment?seq=${board.seq}">게시판 댓글조회</a>
+	작성자 : ${comment.writer}
+	</div>
 </div>
-<jsp:include page="/WEB-INF/jsp/comment/comment.jsp"/>
 </body>
 </html>

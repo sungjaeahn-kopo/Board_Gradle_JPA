@@ -10,7 +10,7 @@ import kr.co.kyowon.vo.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-	@Query("SELECT C FROM Comment C WHERE C.seq = :seq")
+	@Query("SELECT C FROM Comment C WHERE C.seq=:seq")
 	List<Comment> findAllComment(@Param("seq") Long seq);
 
 	

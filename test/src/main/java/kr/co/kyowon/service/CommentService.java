@@ -22,6 +22,7 @@ public class CommentService {
 	
 	@Transactional
 	public List<CommentDao> commentListService(Long seq) {
+		System.out.println("===(commentListService)seq===" + seq);
 		List<Comment> commentList = commentRepository.findAllComment(seq);
 		List<CommentDao> commentDaoList = new ArrayList<>();
 		
@@ -34,10 +35,6 @@ public class CommentService {
 					.createDate(comment.getCreateDate())
 					.updateDate(comment.getUpdateDate())
 					.build();
-			System.out.println("출력이요1 : " + comment.getSeq());
-			System.out.println("출력이요2 : " + comment.getCSeq());
-			System.out.println("출력이요3 : " + comment.getWriter());
-			System.out.println("출력이요4 : " + comment.getContent());
 			commentDaoList.add(commentDao);
 		}
 		
