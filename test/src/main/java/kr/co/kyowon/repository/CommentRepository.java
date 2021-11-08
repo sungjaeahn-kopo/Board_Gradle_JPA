@@ -13,5 +13,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 	@Query("SELECT C FROM Comment C WHERE C.seq=:seq")
 	List<Comment> findAllComment(@Param("seq") Long seq);
 
-	
+//	@Modifying
+//	@Query("insert into Comment(cSeq, seq, writer, content) VALUES(2, :seq, :writer, :comment)")
+//	void saveComment(@Param("seq") Long seq, @Param("writer") String writer, @Param("comment") String comment);
 }

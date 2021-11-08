@@ -39,11 +39,6 @@ public class BoardService {
 	
 	@Transactional
 	public Long savePost(BoardDao boardDao) {
-		System.out.println("===boardDao.toEntity().getSeq()===" + boardDao.toEntity().getSeq());
-		System.out.println("===boardDao.toEntity().getTitle()===" + boardDao.toEntity().getTitle());
-		System.out.println("===boardDao.toEntity().getWriter()===" + boardDao.toEntity().getWriter());
-		System.out.println("===boardDao.toEntity().getContent()===" + boardDao.toEntity().getContent());
-		System.out.println("===boardDao.toEntity().getCnt()===" + boardDao.toEntity().getCnt());
 		return boardRepository.save(boardDao.toEntity()).getSeq();
 	}
 	

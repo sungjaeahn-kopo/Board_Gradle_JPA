@@ -22,7 +22,6 @@ public class CommentService {
 	
 	@Transactional
 	public List<CommentDao> commentListService(Long seq) {
-		System.out.println("===(commentListService)seq===" + seq);
 		List<Comment> commentList = commentRepository.findAllComment(seq);
 		List<CommentDao> commentDaoList = new ArrayList<>();
 		
@@ -41,5 +40,9 @@ public class CommentService {
 		return commentDaoList;
 	}
 	
+	@Transactional
+	public void saveComment(CommentDao commentDao) {
+		commentRepository.save(commentDao.toEntity()).getSeq();
+	}
 	
 }
