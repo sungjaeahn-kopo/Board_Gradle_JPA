@@ -35,6 +35,7 @@ public class CommentService {
 					.updateDate(comment.getUpdateDate())
 					.build();
 			commentDaoList.add(commentDao);
+			System.out.println("seq 나오는지? : " + comment.getSeq());
 		}
 		
 		return commentDaoList;

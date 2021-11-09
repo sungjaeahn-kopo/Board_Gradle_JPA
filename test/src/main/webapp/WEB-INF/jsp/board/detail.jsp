@@ -8,8 +8,9 @@
 <title>게시글 상세 페이지</title>
 </head>
 <body>
-<div class="container" style="margin : 50px; width : 300px;">
-    <div class="card" style="border-style: solid; border-width : 1px; border-color : gray; border-width : 5px; width: 300px; text-align : center;">
+<div class="container" style="margin : 50px; width : 300px; ">
+	<h3>Board Detail</h3><br>
+    <div class="card" style="border-style: solid; background-color : RGBA(246,187,67,0.2); border-width : 0.5px; border-color : RGBA(246,187,67,1); border-width : 5px; width: 300px; text-align : center;">
         <div class="card-body" style="margin: 30px;">
             <h5 class="card-title">${board.writer}</h5>
             <p class="card-text"><small class="text-muted">${board.createDate}</small></p>
@@ -18,42 +19,27 @@
         </div>
     </div>
     <br>
-    <div class="row mt-3">
-        <div class="col-auto mr-auto"></div>
+    <div class="row mt-3" style="margin-left : 25px;">
         <div class="col-auto" style="float: left;">
-            <a class="btn btn-info" href="/board/edit?seq=${board.seq}" role="button">수정</a>
+            <button class="btn btn-info" onclick="location.href='/board/edit?seq=${board.seq}'" style="button">수정하기&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
-        <div class="col-auto" style="float: right;">
+        <div class="col-auto mr-auto" style="float: left;">
+            <button class="btn btn-info" onclick="location.href='/'" style="button">목록으로&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="col-auto" style="float: left;">
             <form id="delete-form" action="/board/delete?seq=${board.seq}" method="post">
                 <input type="hidden" name="_method" value="delete"/>
-                <button id="delete-btn" type="submit" class="btn btn-danger">삭제</button>
+                <button id="delete-btn" type="submit" class="btn btn-danger">삭제하기</button>
             </form>
         </div>
     </div>
 </div>
 
-<!-- 댓글 -->
-<div class="container" style="margin : 50px;">
-	<label for="content">Comments</label>
-	<form name="commentInsertForm">
-		<div class="input-group">
-			<input type="hidden" name="seq" value="${board.seq}"/>
-			<input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요."/>
-			<span class="input-group-btn">
-				<button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
-			</span>
-		</div>
-	</form>
-</div>
-<%-- <c:import url="/comment/comment"> --%>
-<%-- 	<c:param name="seq" value="${board.seq}"/> --%>
-<%-- </c:import> --%>
 <div class="container">
 	<div class="commentList">
-		<a href="javascript:commentList()">aa</a>
-		<a href="/comment/comment?seq=${board.seq}">게시판 댓글조회</a>
-	작성자 : ${comment.writer}
+		<jsp:include page="/comment/comment"></jsp:include>
 	</div>
 </div>
+
 </body>
 </html>

@@ -1,24 +1,20 @@
 package kr.co.kyowon.vo;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @NoArgsConstructor
 @Getter
@@ -53,11 +49,10 @@ public class Board {
     @Column(nullable=true, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     private LocalDateTime updateDate;
 
-    @Column(nullable=true, columnDefinition = "default 0")
+    @Column(nullable=true)
+    @ColumnDefault("0")
     private Long cnt;
     
-    
-
     @Builder
     public Board(Long seq, String title, String writer, String content, LocalDateTime createDate, LocalDateTime updateDate, Long cnt) {
     	this.seq = seq;

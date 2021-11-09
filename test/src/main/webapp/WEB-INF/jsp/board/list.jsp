@@ -7,9 +7,16 @@
 <meta charset="UTF-8">
 <title>게시글 리스트 페이지</title>
 </head>
+<style>
+	td {
+		height : 30px;
+	}
+
+</style>
 <body>
-<div class="container" style="margin : 200px;">
-    hello<br><br>
+<div class="container" style="margin : 100px;">
+    <h3>Board List</h3>
+    <br><br>
     <table border="1">
     	<tr>
     		<th>일련번호</th>
@@ -22,7 +29,7 @@
     	</tr>
 	    <c:forEach var="item" items="${board}">
 	    	<tr>
-		    	<td>
+		    	<td style="text-align : center;">
 					<a href="/board/detail?seq=${item.seq}">
 				    	${item.seq}
 					</a>
@@ -50,7 +57,10 @@
 	    	</tr>
 	    </c:forEach>
     </table>
-    
+    <br>
+    <div style="float : right; width : 450px;">
+    	<button style="button" onclick="location.href='/board/post'">글쓰기</button>
+    </div>
 </div>
 
 </body>

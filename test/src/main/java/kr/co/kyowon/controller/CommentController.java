@@ -22,6 +22,7 @@ public class CommentController {
 	public String commentList(@RequestParam String seq ,Model model) {
 		List<CommentDao> commentDaoList = commentService.commentListService(Long.valueOf(seq));
 		model.addAttribute("comment",commentDaoList);
+		model.addAttribute("seq", seq);
 		return "comment/comment";
 	}
 	
@@ -29,17 +30,13 @@ public class CommentController {
 	public String saveComment(CommentDao commentDao, Model model) {
 		System.out.println("controller가 잡는지?");
 		// 받아온 파라미터 Dao 객체에 저장
-		System.out.println(commentDao.getSeq());
-		System.out.println(commentDao.getWriter());
-		System.out.println(commentDao.getContent());
-		
 		// 댓글 등록
-		//commentService.saveComment(commentDao);
+		commentService.saveComment(commentDao);
 		System.out.println("댓등록, service 지나는지?");
 		// 등록한 댓글 포함해 list에 저장
-		//List<CommentDao> list = commentService.commentListService(commentDao.getSeq());
+		List<CommentDao> list = commentService.commentListService(commentDao.getSeq());
 		System.out.println("list등록, service 지나는지?");
-		//model.addAttribute("comment", list);
+		model.addAttribute("comment", list);
 		return "/comment/comment";
 	}
 	

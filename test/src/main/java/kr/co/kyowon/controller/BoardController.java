@@ -44,7 +44,13 @@ public class BoardController {
 	@PostMapping("/board/post")
 	public String selectAll(BoardDao boardDao) {
 		boardService.savePost(boardDao);
-		return "board/post";
+		return "redirect:/";
+	}
+	
+	// 게시글 작성전 url로 접근시 mapping
+	@GetMapping("/board/post")
+	public String updatePage() {
+		return "home";
 	}
 	
 	// 게시글 상세조회
