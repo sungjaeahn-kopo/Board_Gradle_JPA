@@ -4,6 +4,7 @@ package kr.co.kyowon.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.kyowon.dao.BoardDao;
 import kr.co.kyowon.service.BoardService;
+import kr.co.kyowon.vo.Board;
 
 @Controller
 public class BoardController {
@@ -39,6 +41,11 @@ public class BoardController {
 		model.addAttribute("totalPage", boardDaoList);
 		return "board/list";
 	}
+	
+	@GetMapping("/paging")
+	public Page<Board> findBoardByPageRequest(final Pageable pageable) {
+        return boardService.findBooksByPageRequest(pageable);
+    }
 	
 	// 게시글 작성
 	@PostMapping("/board/post")

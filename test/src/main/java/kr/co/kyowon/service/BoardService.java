@@ -98,4 +98,9 @@ public class BoardService {
 		return boardRepository.findAll(pageable);
 	}
 	
+	@Transactional
+	public Page<Board> findBooksByPageRequest(Pageable pageable) {
+        return boardRepository.findAll(pageable);
+	}
+	
 }

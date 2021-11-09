@@ -62,6 +62,10 @@
     	<button style="button" onclick="location.href='/board/post'">글쓰기</button>
     </div>
 </div>
-
+<div class="paging" id="paging">
+	<c:forEach var="item" items="${pageList}">
+		<a href="'/?page=' + ${pageNum}">${pageNum}</a>
+	</c:forEach>
+</div>
 </body>
 </html>
