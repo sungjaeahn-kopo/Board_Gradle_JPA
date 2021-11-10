@@ -1,11 +1,10 @@
 package kr.co.kyowon.controller;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,29 +23,36 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@Autowired
-	
 	public BoardController(BoardService boardService) {
 		this.boardService = boardService;
 	}
 
-	// 게시글 전체목록 조회
+	// 게시글 전체목록 조회 (작성자, 글내용 검색)
 	@GetMapping("/")
-	public String list(Model model, @PageableDefault(size=10, sort="seq") Pageable pageable) {
-		List<BoardDao> boardDaoList = boardService.getBoardList();
-//		Page<Board> boardDaoList = boardService.list(pageable);
-		model.addAttribute("board", boardDaoList);
-		model.addAttribute("currentPage", boardDaoList);
-		model.addAttribute("listSize", boardDaoList);
-		model.addAttribute("pageSize", boardDaoList);
-		model.addAttribute("totalPage", boardDaoList);
+	public String list(Model model,
+			@PageableDefault(size=10, sort="seq", direction = Sort.Direction.DESC)
+			Pageable pageable) {
+		// board 객체의 정보를 page 단위별로 나누기위해 pageList 정의
+		Page<Board> pageList = boardService.list(pageable);
+		// 
+//		List<BoardDao> boardList = boardService.getBoardList();
+		int pageNum = pageList.getPageable().getPageNumber();
+		int totalPages = pageList.getTotalPages();
+		int pageBlock = 5;
+		// 현재 페이지가 정중앙에 올 수 있도록 시작페이지 설정
+		int startBlockPage = ((pageNum)/pageBlock)*pageBlock;
+		System.out.println("시작 숫자 : " + startBlockPage);
+		// 6, 7, 8, 9, 10
+		int endBlockPage = startBlockPage+pageBlock;
+		endBlockPage = totalPages<endBlockPage?totalPages:endBlockPage;
+		
+//		model.addAttribute("board", boardList);
+		model.addAttribute("page", pageList);
+		model.addAttribute("start", startBlockPage);
+		model.addAttribute("end", endBlockPage);
 		return "board/list";
 	}
-	
-	@GetMapping("/paging")
-	public Page<Board> findBoardByPageRequest(final Pageable pageable) {
-        return boardService.findBooksByPageRequest(pageable);
-    }
-	
+
 	// 게시글 작성
 	@PostMapping("/board/post")
 	public String selectAll(BoardDao boardDao) {
@@ -96,9 +102,4 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
-//	@GetMapping("/board/list")
-//	public Page<Board> index(Pageable pageable) {
-//		Page<Board> page = boardService.list(pageable);
-//		return page;
-//	}
 }
