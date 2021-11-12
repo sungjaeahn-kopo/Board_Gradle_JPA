@@ -47,7 +47,6 @@
 <br>
 
 <h3>private static final Logger logger = LoggerFactory.getLogger(Controller.class);</h3>
-<br>
  - static?
  객체가 선언될 때마다 해당 객체를 매번 생성하지 않고 초기 클래스 로딩시 한번만 생성하기 위해
 <br>
