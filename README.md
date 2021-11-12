@@ -66,12 +66,26 @@
  <h4>Exception : 입력값에 대한 처리가 불가능하거나, 프로그램 실행 중 참조된 값이 잘못된 경우 등 정상적인 프로그램 흐름에 어긋나는 것</h4>
  <h4>Error : 시스템에 비정상적인 상황이 발생한 경우 (주로 JVM에서 발생시킴)</h4>
  ![image](https://user-images.githubusercontent.com/80259014/141392461-244d7c0d-c120-431f-b445-dc7166ed4de3.png)
-<br>RuntimeException을 상속하지 않는 클래스 : Checked Exception
+<br>RuntimeException을 상속하지 않는 클래스 : Checked Exception<br>
 RuntimeException을 상속한 클래스 : Unchecked Exception<br>
 ![image](https://user-images.githubusercontent.com/80259014/141392627-1f3ed2a9-07df-4983-93a2-09b5d5626cbb.png)
-
+<br>
 <br>
 <h3>@ModelAttribute 흐름</h3>
  - @ModelAttribute가 붙은 객체를 자동으로 생성 (이때 지정되는 클래스는 beans 클래스여야함)
  - 생성된 Object에 Get 방식으로 호출된 값들을 자동 바인딩
  - 어노테이션 붙은 객체가 자동으로 Model 객체에 추가되어 .jsp(View)에 전달
+<br><br>
+<h3>@Autowired vs @Resource</h3>
+ - @Resource
+ -- name 속성 기준으로 찾음 => 타입 => @Qualifier
+ -- xml 파일에 <context:annotation-config/> 추가 필수
+ 
+ - @Autowired
+ -- 객체의 타입 기준으로 찾음 => 이름 => @Qualifier
+ -- xml 파일에 <context:annotation-config/> 추가 필수
+ 
+   
+
+
+
