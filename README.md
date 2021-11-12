@@ -54,6 +54,22 @@
  - final?
  로그를 찍는 Logger는 초기 생성된 이후에 변경될 필요가 없기 때문에
 <br>
-> getLogger() 메소드의 파라미터 = Logger의 이름
+ - getLogger() 메소드의 파라미터 = Logger의 이름
 >> 클래스 객체를 이름으로 넘겨주면(Controller.class) Logger의 이름은 "패키지 이름 + 클래스 이름"으로 구성 
+<br><br>
+
+<h3>@Transactional(rollbackFor = {Exception.class})</h3>
+ - 예외발생시 롤백
+ - default setting => UnCheckedException, Error
+ 
+ <br>
+ <h3>CheckedException vs UnCheckedException vs Error</h3>
+ <br>
+ <h4>Exception : 입력값에 대한 처리가 불가능하거나, 프로그램 실행 중 참조된 값이 잘못된 경우 등 정상적인 프로그램 흐름에 어긋나는 것</h4><br>
+ <h4>Error : 시스템에 비정상적인 상황이 발생한 경우 (주로 JVM에서 발생시킴)</h4><br>
+ ![image](https://user-images.githubusercontent.com/80259014/141392461-244d7c0d-c120-431f-b445-dc7166ed4de3.png)
+RuntimeException을 상속하지 않는 클래스 : Checked Exception
+RuntimeException을 상속한 클래스 : Unchecked Exception
+![image](https://user-images.githubusercontent.com/80259014/141392627-1f3ed2a9-07df-4983-93a2-09b5d5626cbb.png)
+
 
