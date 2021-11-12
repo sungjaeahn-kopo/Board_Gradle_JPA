@@ -70,4 +70,8 @@
 RuntimeException을 상속한 클래스 : Unchecked Exception<br>
 ![image](https://user-images.githubusercontent.com/80259014/141392627-1f3ed2a9-07df-4983-93a2-09b5d5626cbb.png)
 
-
+<br>
+<h3>@ModelAttribute 흐름</h3>
+ - @ModelAttribute가 붙은 객체를 자동으로 생성 (이때 지정되는 클래스는 beans 클래스여야함)
+ - 생성된 Object에 Get 방식으로 호출된 값들을 자동 바인딩
+ - 어노테이션 붙은 객체가 자동으로 Model 객체에 추가되어 .jsp(View)에 전달
