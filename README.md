@@ -61,7 +61,7 @@
 <h3>@Transactional(rollbackFor = {Exception.class})</h3>
  - 예외발생시 롤백
  - default setting => UnCheckedException, Error
- 
+ <br>
  <br>
  <h3>CheckedException vs UnCheckedException vs Error</h3>
  <h4>Exception : 입력값에 대한 처리가 불가능하거나, 프로그램 실행 중 참조된 값이 잘못된 경우 등 정상적인 프로그램 흐름에 어긋나는 것</h4>
