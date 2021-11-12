@@ -48,11 +48,11 @@
 
 <h3>private static final Logger logger = LoggerFactory.getLogger(Controller.class);</h3>
 <br>
-> static?
-> : 객체가 선언될 때마다 해당 객체를 매번 생성하지 않고 초기 클래스 로딩시 한번만 생성하기 위해
+ - static?
+ 객체가 선언될 때마다 해당 객체를 매번 생성하지 않고 초기 클래스 로딩시 한번만 생성하기 위해
 <br>
-</t>final?
-<br></t>로그를 찍는 Logger는 초기 생성된 이후에 변경될 필요가 없기 때문에
+ - final?
+ 로그를 찍는 Logger는 초기 생성된 이후에 변경될 필요가 없기 때문에
 <br>
 > getLogger() 메소드의 파라미터 = Logger의 이름
 >> 클래스 객체를 이름으로 넘겨주면(Controller.class) Logger의 이름은 "패키지 이름 + 클래스 이름"으로 구성 
