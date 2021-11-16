@@ -12,5 +12,5 @@ Servlet 객체들은 RequestContextHolder로부터 현재의 ServletReqeustAttri
 
     ServletRequestAttributes attr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
 
-ㅁㅁ
+   ![image](https://user-images.githubusercontent.com/80259014/141927782-bfc43914-17ee-4bea-8188-a66ee2d5929d.png)
 
