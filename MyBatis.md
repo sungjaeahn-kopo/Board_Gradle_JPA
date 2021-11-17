@@ -19,3 +19,8 @@
         WHERE filed = #{value}
       </select>
     </mapper>
+
+<h3>Escape</h3>
+ : LIKE 연산으로 '%'나 '_'가 들어간 문자를 검색하기 위해서 ESCAPE를 사용해야 함
+ 
+        SELECT LOC FROM DEPT WHERE LOC LIKE '%#_%' ESCAPE '#';
