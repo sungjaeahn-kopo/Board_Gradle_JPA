@@ -1,13 +1,14 @@
 spring:
-  data:    web:
+  data:
+    web:
       pageable:
         default-page-size: 10
         one-indexed-parameters: true
   datasource:
-    url: jdbc:mariadb://localhost:3306/test
+    url: jdbc:mariadb://localhost:3306/board_spa
     driver-class-name: org.mariadb.jdbc.Driver
     username: root
-    password: root
+    password: 38119
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
     open-in-view: false
