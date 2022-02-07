@@ -3,6 +3,7 @@ export async function getBoard() {
     return await response.json();
 }
 
+// 게시물 생성 수정필요
 export async function createBoard(data) {
     const response = await fetch('/api/save', {
         method : 'POST',
