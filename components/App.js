@@ -19,20 +19,20 @@ class App extends Component {
             .then(boards => {
                 console.log(boards)
                 this.setState({boards : boards, numberOfBoards : boards.length})
-            })
-            .catch(error => console.log(error));
+            });
     }
 
-    createBoard = () => {
-        createBoard()
+    createBoard = (e) => {
+        createBoard(this.state.board)
             .then(response => {
-                console.log(response);
+                console.log("App data : " + response);
                 this.setState({numberOfBoards : this.state.numberOfBoards + 1})
             })
     }
 
     onChangeForm = (e) => {
         let board = this.state.board
+        console.log("board!! : ", board);
         if(e.target.name === 'title') {
             board.title = e.target.value;
         } else if(e.target.name === 'writer') {
@@ -41,6 +41,8 @@ class App extends Component {
             board.content = e.target.value;
         }
         this.setState({board})
+        console.log("changeform 데이터!! : ", board);
+        console.log("board length !! : ", board.length);
     }
 
     render() {

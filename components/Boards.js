@@ -4,6 +4,7 @@ export const Boards = ({boards}) => {
     console.log('boards length:::', boards.length)
     
     if(boards.length === 0) return null
+    
     const BoardRow = (board, index) => {
 
         return (
