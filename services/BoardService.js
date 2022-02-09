@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import { useCallback } from "react";
+
 export async function getBoard() {
     const response = await fetch('/api/board');
     return await response.json();
@@ -15,3 +18,24 @@ export async function createBoard(data) {
     return await response.json();
     
 }
+
+// userouter
+// export default function postBoard() {
+//     const router = useRouter
+//     const handleSubmit = useCallback((e) => {
+//         e.preventDefault()
+
+//         fetch('/api/save', {
+//             method : 'POST',
+//             headers : {'CONTENT-TYPE' : 'application/json'},
+//             body : JSON.stringify({
+
+//             }),
+//         }).then((res) => {
+//             if(res.ok) router.push('/')
+//         })
+//     }, [])
+
+
+
+// }

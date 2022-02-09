@@ -4,6 +4,7 @@ import { Boards } from './Boards';
 import CreateBoard from './CreateBoard';
 import { DisplayBoard } from './DisplayBoard';
 import { Header } from './Header';
+import PostBoard from './PostBoard';
 
 
 class App extends Component {
@@ -59,6 +60,7 @@ class App extends Component {
                                 createBoard={this.createBoard}
                                 >
                                 </CreateBoard>
+                                <PostBoard/>
                         </div>
                         <div className="col-md-4">
                             <DisplayBoard

@@ -8,10 +8,7 @@ const CreateBoard = ({ onChangeForm, createBoard}) => {
             <div className='row'>
                 <div className='col-md-7 mrgbtm'>
                     <h2>Create Board</h2>
-                    <form onSubmit={(e) => {
-                        const data = e.target.title;
-                        console.log("submit data!! : " + data);
-                    }}>
+                    <form>
                         <div className='row'>
                             <div className='form-group col-md-6'>
                                 <label htmlFor = 'title'>Title</label>
@@ -29,8 +26,8 @@ const CreateBoard = ({ onChangeForm, createBoard}) => {
                             {/* <input type="text" onChange={(e) => onChangeForm(e)} /> */}
                             <input id = 'content' name = 'content' type="text" onChange={(e) => onChangeForm(e)} />
                         </div>
-                        {/* <button type="button" onClick = {(e) => createBoard(e.target)} className='btn btn-danger'>Create</button> */}
-                        <input type="submit"></input>
+                        <button type="button" onClick = {(e) => createBoard(e.target)} className='btn btn-danger'>Create</button>
+                        {/* <input type="submit"></input> */}
                     </form>
                 </div>
             </div>
