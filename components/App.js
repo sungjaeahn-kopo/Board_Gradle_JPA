@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {createBoard, getBoard} from '../services/BoardService'
 import { Boards } from './Boards';
-import CreateBoard from './CreateBoard';
 import { DisplayBoard } from './DisplayBoard';
 import { Header } from './Header';
 import PostBoard from './PostBoard';
@@ -54,12 +53,12 @@ class App extends Component {
                 <div className="container mrgnbtm">
                     <div className="row">
                         <div className="col-md-8">
-                            <CreateBoard
+                            {/* <CreateBoard
                                 board={this.state.board}
                                 onChangeForm={this.onChangeForm}
                                 createBoard={this.createBoard}
                                 >
-                                </CreateBoard>
+                                </CreateBoard> */}
                                 <PostBoard/>
                         </div>
                         <div className="col-md-4">
