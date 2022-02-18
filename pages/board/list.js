@@ -20,7 +20,7 @@ const BoardList = () => {
             })
             return () => {
             };
-        }, []);
+        });
 
 
     return (

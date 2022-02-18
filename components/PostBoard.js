@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Component } from "react";
 
 
@@ -64,7 +65,9 @@ class PostBoard extends Component {
                     </div>
                     <div><button type="submit">작성</button></div>
                 </form>
-                    <div><button type ="button" onClick={goToList}>목록으로</button></div>
+                        <Link href="/board/list">
+                            <button>목록으로</button>
+                        </Link>
             </div>
         )
     }

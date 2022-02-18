@@ -6,13 +6,13 @@ const Boards = ({boards}) => {
     console.log('boards length ::: ', boards.length);
     if(boards.length === 0) return null
 
-    // console.log("board22 ::: ", boards);
-   
-
+    const onChange = () => {
+        
+    }
 
     const BoardRow = (board, index) => {
         return (
-            <tr key = {index} className={index%2 === 0? 'odd' : 'even'}>
+            <tr key = {index} className={index%2 === 0? 'odd' : 'even'} onChange={onChange}>
                 <td>{index + 1}</td>
                 <td>{board.title}</td>
                 <td>{board.writer}</td>
@@ -20,10 +20,8 @@ const Boards = ({boards}) => {
             </tr>
         )
     }
-    // const boardArray = Array.from(boards);
-    // console.log("boardArray ::: ", boardArray);
-    const boardTable = boards.map((board, index) => BoardRow(board, index)) ;
 
+    const boardTable = boards.map((board, index) => BoardRow(board, index)) ;
 
         return (
             <>

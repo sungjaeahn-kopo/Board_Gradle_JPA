@@ -29,24 +29,17 @@ const App = () => {
             <div className="container mrgnbtm">
                 <div className="row">
                     <div className="col-md-8">
-                        <PostBoard/>
+                        {/* <PostBoard/> */}
                     </div>
                     <div className="col-md-4">
-                        {/* {boards} */}
-                        {/* <DisplayBoard
-                            numberOfBoards={numberOfBoards}
-                            getBoard={boards.title}
-                            >
-                            </DisplayBoard> */}
                     </div>
                 </div>
             </div>
             <div className="row mrgbtm">
-                <Boards boards={boards}></Boards>
+                {/* <Boards boards={boards}></Boards> */}
             </div>
         </div>
     );
-
 
 }
 
