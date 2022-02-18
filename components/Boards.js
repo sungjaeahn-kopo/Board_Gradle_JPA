@@ -1,11 +1,29 @@
-import BoardRow from "./BoardRow";
+import { useEffect } from "react"
+import { getBoard } from "../services/BoardService"
 
 const Boards = ({boards}) => {
 
-    // console.log('boards length ::: ', boards.length);
-    // if(boards.length === 0) return null
+    console.log('boards length ::: ', boards.length);
+    if(boards.length === 0) return null
 
-    const boardTable = boards.map((board, index) => {
+    // console.log("board22 ::: ", boards);
+   
+
+
+    const BoardRow = (board, index) => {
+        return (
+            <tr key = {index} className={index%2 === 0? 'odd' : 'even'}>
+                <td>{index + 1}</td>
+                <td>{board.title}</td>
+                <td>{board.writer}</td>
+                <td>{board.content}</td>
+            </tr>
+        )
+    }
+    // const boardArray = Array.from(boards);
+    // console.log("boardArray ::: ", boardArray);
+    const boardTable = boards.map((board, index) => BoardRow(board, index)) ;
+
 
         return (
             <>
@@ -20,16 +38,11 @@ const Boards = ({boards}) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <BoardRow 
-                        board={board}
-                        index={index} />
+                        {boardTable}
                     </tbody>
                 </table>
             </>
         )
-
-    })
-
 
 }
 

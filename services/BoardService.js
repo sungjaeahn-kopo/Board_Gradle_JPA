@@ -1,9 +1,14 @@
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 
+// export async function getBoard() {
+//     const response = await fetch('/api/board');
+//     return await response.json();
+// }
 export async function getBoard() {
     const response = await fetch('/api/board');
-    return await response.json();
+    return response.json();
 }
 
 // 게시물 생성 수정필요

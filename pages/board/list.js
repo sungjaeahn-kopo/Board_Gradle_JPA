@@ -1,27 +1,32 @@
-import { useState } from "react";
-import { DisplayBoard } from "../../components/DisplayBoard"
+import { useEffect, useState } from "react";
+import Boards from "../../components/Boards";
 import { Header } from "../../components/Header"
 import { getBoard } from "../../services/BoardService";
 
 const BoardList = () => {
 
-    const [boards, setBoards] = useState(getBoard);
-    const [numberOfBoards, setNumberOfBoards] = useState('');
+    const [board, setBoard] = useState({});
+    const [boards, setBoards] = useState([]);
+    const [numberOfBoards, setNumberOfBoards] = useState(0);
 
-    // getBoard = () => {
-    //     getBoard(boards)
-    //     .then(boards => {
-    //         console.log('결과값 : ', boards)
-    //         setBoards(getBoard({boards, numberOfBoards}));
-    //     })
-    // }
+    useEffect(() => {
+        getBoard()
+            .then(response => {
+                console.log(response);
+                console.log("타입 : ", typeof(response))
+                setBoards(response);
+                setNumberOfBoards(response.length);
+                console.log('boards ::: ', boards)
+            })
+            return () => {
+            };
+        }, []);
+
 
     return (
         <>
             <Header />
-            <DisplayBoard 
-            numberOfBoards={numberOfBoards}
-            getBoard={boards} />
+            <Boards boards={boards}></Boards>
         </>
     )
 }
