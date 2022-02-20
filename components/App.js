@@ -1,50 +1,44 @@
-import React, {Component, useEffect, useState} from 'react';
-import {createBoard, getBoard} from '../services/BoardService'
-import Boards from './Boards';
-import DisplayBoard from './DisplayBoard';
-import { Header } from './Header';
-import PostBoard from './PostBoard';
+import React, { Component, useEffect, useState } from "react";
+import { createBoard, getBoard } from "../services/BoardService";
+import Boards from "./Boards";
+import DisplayBoard from "./DisplayBoard";
+import { Header } from "./Header";
+import PostBoard from "./PostBoard";
 
 const App = () => {
-    const [board, setBoard] = useState({});
-    const [boards, setBoards] = useState([]);
-    const [numberOfBoards, setNumberOfBoards] = useState(0);
+  //   const [board, setBoard] = useState({});
+  //   const [boards, setBoards] = useState([]);
+  //   const [numberOfBoards, setNumberOfBoards] = useState(0);
 
-    useEffect(() => {
-        getBoard()
-            .then(response => {
-                console.log(response);
-                console.log("타입 : ", typeof(response))
-                setBoards(response);
-                setNumberOfBoards(response.length);
-                console.log('boards ::: ', boards)
-            })
-            return () => {
-            };
-        }, []);
+  //   useEffect(() => {
+  //     getBoard().then((response) => {
+  //       console.log(response);
+  //       console.log("타입 : ", typeof response);
+  //       setBoards(response);
+  //       setNumberOfBoards(response.length);
+  //       console.log("boards ::: ", boards);
+  //     });
+  //     return () => {};
+  //   }, []);
 
-    return (
-        <div className="App">
-            <Header />
-            <div className="container mrgnbtm">
-                <div className="row">
-                    <div className="col-md-8">
-                        {/* <PostBoard/> */}
-                    </div>
-                    <div className="col-md-4">
-                    </div>
-                </div>
-            </div>
-            <div className="row mrgbtm">
-                {/* <Boards boards={boards}></Boards> */}
-            </div>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Header />
+      {/* <div className="container mrgnbtm">
+        <div className="row">
+          <div className="col-md-8">{/* <PostBoard/> */}
+    </div>
+    //       <div className="col-md-4"></div>
+    //     </div>
+    //   </div>
+    //   <div className="row mrgbtm">
+    // {/* <Boards boards={boards}></Boards> */}
+    //   </div> */}
+    // </div>
+  );
+};
 
-}
-
-export default App
-
+export default App;
 
 // class App extends Component {
 
