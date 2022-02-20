@@ -11,10 +11,12 @@ import {
   UserOutlined,
 } from "@ant-design/icons/lib/icons";
 import App from "./App";
-import { Route, Router } from "react-router-dom";
 import Boards from "./Boards";
 import PostBoard from "./PostBoard";
 import { getBoard } from "../services/BoardService";
+import { Route, Router, Switch } from "react-router-dom";
+import { useRouter } from "next/router";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // function TabPanel(props) {
 //     const { children, value, index, ...other } = props;
@@ -91,6 +93,8 @@ export const Header = () => {
   //     }
   // }
 
+  const router = useRouter();
+
   return (
     <Layout>
       <Header className="header">
@@ -98,23 +102,18 @@ export const Header = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["1"]}
+          //   defaultSelectedKeys={["1"]}
+          selectedKeys={[router.pathname]}
           // onClick={ChangeMenu}
         >
-          <Menu.Item key="1">
-            {/* <Link href="/"> */}
-            Home
-            {/* </Link> */}
+          <Menu.Item key="/">
+            <Link href="/">Home</Link>
           </Menu.Item>
-          <Menu.Item key="2">
-            {/* <Link href="/board/list"> */}
-            BoardList
-            {/* </Link> */}
+          <Menu.Item key="/board/list">
+            <Link href="/board/list">BoardList</Link>
           </Menu.Item>
-          <Menu.Item key="3">
-            {/* <Link href="/board/save"> */}
-            BoardPost
-            {/* </Link> */}
+          <Menu.Item key="/board/save">
+            <Link href="/board/save">BoardPost</Link>
           </Menu.Item>
         </Menu>
       </Header>
@@ -165,6 +164,13 @@ export const Header = () => {
             }}
           >
             {/* <ChangeMenu key={Menu.Item.value} /> */}
+            {/* <Router>
+              <Switch> */}
+            {/* <Route exact path="/" component={App} /> */}
+            {/* <Route path="/board/list" component={Boards} /> */}
+            {/* <Route path="/board/save" component={PostBoard} /> */}
+            {/* </Switch>
+            </Router> */}
             <Boards boards={boards}></Boards>
           </Content>
         </Layout>
