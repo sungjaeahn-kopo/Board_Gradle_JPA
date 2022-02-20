@@ -56,9 +56,9 @@ export const Header = () => {
                 <Header className="header">
                     <div className="logo" />
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                        <Menu.Item key="1">Home</Menu.Item>
-                        <Menu.Item key="2">BoardList</Menu.Item>
-                        <Menu.Item key="3">BoardPost</Menu.Item>
+                        <Menu.Item key="1"><Link href="/">Home</Link></Menu.Item>
+                        <Menu.Item key="2"><Link href="/board/list">BoardList</Link></Menu.Item>
+                        <Menu.Item key="3"><Link href="/board/save">BoardPost</Link></Menu.Item>
                     </Menu>
                 </Header>
                 <Layout>

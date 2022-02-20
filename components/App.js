@@ -25,7 +25,7 @@ const App = () => {
 
     return (
         <div className="App">
-            <Header></Header>
+            <Header />
             <div className="container mrgnbtm">
                 <div className="row">
                     <div className="col-md-8">
