@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getBoard } from "../services/BoardService";
 import { Table, Tag, Space } from "antd";
+import { withRouter } from "./WithRouter";
 
 const Boards = ({ boards }) => {
   const columns = [

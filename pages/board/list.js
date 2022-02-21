@@ -1,39 +1,33 @@
 import { useEffect, useState } from "react";
 import Boards from "../../components/Boards";
-import { Header } from "../../components/Header"
+import { Header } from "../../components/Header";
 import { getBoard } from "../../services/BoardService";
 
 const BoardList = () => {
+  const [board, setBoard] = useState({});
+  const [boards, setBoards] = useState([]);
+  const [numberOfBoards, setNumberOfBoards] = useState(0);
 
-    const [board, setBoard] = useState({});
-    const [boards, setBoards] = useState([]);
-    const [numberOfBoards, setNumberOfBoards] = useState(0);
+  useEffect(() => {
+    getBoard().then((response) => {
+      console.log(response);
+      console.log("타입 : ", typeof response);
+      setBoards(response);
+      setNumberOfBoards(response.length);
+      console.log("boards ::: ", boards);
+    });
+    return () => {};
+  });
 
-    useEffect(() => {
-        getBoard()
-            .then(response => {
-                console.log(response);
-                console.log("타입 : ", typeof(response))
-                setBoards(response);
-                setNumberOfBoards(response.length);
-                console.log('boards ::: ', boards)
-            })
-            return () => {
-            };
-        });
-
-
-    return (
-        <>
-            <Header />
-            <Boards boards={boards}></Boards>
-        </>
-    )
-}
+  return (
+    <>
+      <Header />
+      {/* <Boards boards={boards}></Boards> */}
+    </>
+  );
+};
 
 export default BoardList;
-
-
 
 // export default function BoardList() {
 
@@ -49,7 +43,7 @@ export default BoardList;
 //     return (
 //         <>
 //             <Header />
-//             <DisplayBoard 
+//             <DisplayBoard
 //             numberOfBoards={this.state.numberOfBoards}
 //             getBoard={this.getBoard} />
 //         </>

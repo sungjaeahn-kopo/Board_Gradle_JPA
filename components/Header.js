@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 import { Tab, Tabs } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
@@ -16,6 +16,8 @@ import PostBoard from "./PostBoard";
 import { getBoard } from "../services/BoardService";
 import { Route, Router, Switch } from "react-router-dom";
 import { useRouter } from "next/router";
+import { BrowserRouter } from "react-router-dom";
+import Item from "antd/lib/list/Item";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // function TabPanel(props) {
@@ -62,21 +64,28 @@ export const Header = () => {
   const { SubMenu } = Menu;
   const { Header, Content, Sider } = Layout;
 
-  const [board, setBoard] = useState({});
+  // const [board, setBoard] = useState({});
   const [boards, setBoards] = useState([]);
   const [numberOfBoards, setNumberOfBoards] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     getBoard().then((response) => {
-      console.log(response);
-      console.log("타입 : ", typeof response);
       setBoards(response);
       setNumberOfBoards(response.length);
-      console.log("boards ::: ", boards);
+      console.log(response);
     });
-    // return () => {};
+    console.log("router pathname ::: ", router.pathname);
+    console.log("boards ::: ", boards);
+    return () => {};
   }, []);
 
+  const showComponent = () => {
+    console.log("show Component", router.pathname);
+    if (router.pathname === "/board/list") return <Boards boards={boards} />;
+    else if (router.pathname === "/board/save") return <PostBoard />;
+    else return "home";
+  };
   // function ChangeMenu(props) {
 
   //     console.log('value ::: ', props)
@@ -92,8 +101,6 @@ export const Header = () => {
   //             return 'content';
   //     }
   // }
-
-  const router = useRouter();
 
   return (
     <Layout>
@@ -163,6 +170,7 @@ export const Header = () => {
               minHeight: 280,
             }}
           >
+            {showComponent()}
             {/* <ChangeMenu key={Menu.Item.value} /> */}
             {/* <Router>
               <Switch> */}
@@ -171,7 +179,17 @@ export const Header = () => {
             {/* <Route path="/board/save" component={PostBoard} /> */}
             {/* </Switch>
             </Router> */}
-            <Boards boards={boards}></Boards>
+
+            {/* <BrowserRouter>
+              <Router>
+                <Switch> */}
+            {/* <Route exact path="/" component={App} /> */}
+            {/* <Route path="/list" component={Boards} /> */}
+            {/* <Route path="/board/list" component={Boards} /> */}
+            {/* </Switch>
+              </Router>
+            </BrowserRouter> */}
+            {/* <Boards boards={boards}></Boards> */}
           </Content>
         </Layout>
       </Layout>
