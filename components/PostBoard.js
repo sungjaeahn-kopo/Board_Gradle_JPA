@@ -1,76 +1,155 @@
 import Link from "next/link";
-import { Component } from "react";
+import { Component, useState } from "react";
 
+const PostBoard = () => {
+  const [inputs, setInputs] = useState({
+    title: "",
+    writer: "",
+    content: "",
+  });
 
-class PostBoard extends Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            title:'',
-            writer:'',
-            content:''
-        };
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
+  // 비구조화 할당
+  const { title, writer, content } = inputs;
 
-    onChange(e) {
-        this.setState ({
-            [e.target.name] : e.target.value
-        });
-    }
+  function onChange(e) {
+    // e.target에서 값 추출
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs, // 기존 input 객체 복사
+      [name]: value, // name 키를 가진 값을 value로 설정
+    });
+  }
 
-    onSubmit(e) {
-        e.preventDefault();
-        const post = {
-            title : this.state.title,
-            writer : this.state.writer,
-            content : this.state.content
-        }
+  function onSubmit(e) {
+    e.preventDefault();
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs, // 기존 input 객체 복사
+      [name]: value, // name 키를 가진 값을 value로 설정
+    });
 
-        fetch('/api/save', {
-            method : 'POST',
-            headers : {
-                'content-type' : 'application/json'
-            },
-            body : JSON.stringify(post)
-        })
-        .then(res => res.json())
-        .then(data => console.log(data));
-    }
+    fetch("/api/save", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(inputs),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }
 
-    goToList(e) {
-        
-    }
+  return (
+    <div>
+      <h4>new Post</h4>
+      <form onSubmit={onSubmit}>
+        <div>
+          <label>title</label>
+          <input type="text" name="title" value={title} onChange={onChange} />
+        </div>
+        <div>
+          <label>writer</label>
+          <input type="text" name="writer" value={writer} onChange={onChange} />
+        </div>
+        <div>
+          <label>content</label>
+          <input
+            type="text"
+            name="content"
+            value={content}
+            onChange={onChange}
+          />
+        </div>
+        <div>
+          <button type="submit">작성</button>
+        </div>
+      </form>
+      <Link href="/board/list">
+        <button>목록으로</button>
+      </Link>
+    </div>
+  );
+};
 
-    render() {
-        const {title, writer, content} = this.state;
-        const {onChange, onSubmit, goToList} = this;
+// class PostBoard extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       title: "",
+//       writer: "",
+//       content: "",
+//     };
+//     this.onChange = this.onChange.bind(this);
+//     this.onSubmit = this.onSubmit.bind(this);
+//   }
 
-        return (
-            <div>
-                <h4>new Post</h4>
-                <form onSubmit={onSubmit}>
-                    <div>
-                        <label>title</label>
-                        <input type="text" name="title" value={title} onChange={onChange} />
-                    </div>
-                    <div>
-                        <label>writer</label>
-                        <input type="text" name="writer" value={writer} onChange={onChange} />
-                    </div>
-                    <div>
-                        <label>content</label>
-                        <input type="text" name="content" value={content} onChange={onChange} />
-                    </div>
-                    <div><button type="submit">작성</button></div>
-                </form>
-                    <Link href="/board/list">
-                        <button>목록으로</button>
-                    </Link>
-            </div>
-        )
-    }
-}
+//   onChange(e) {
+//     this.setState({
+//       [e.target.name]: e.target.value,
+//     });
+//   }
+
+//   onSubmit(e) {
+//     e.preventDefault();
+//     const post = {
+//       title: this.state.title,
+//       writer: this.state.writer,
+//       content: this.state.content,
+//     };
+
+//     fetch("/api/save", {
+//       method: "POST",
+//       headers: {
+//         "content-type": "application/json",
+//       },
+//       body: JSON.stringify(post),
+//     })
+//       .then((res) => res.json())
+//       .then((data) => console.log(data));
+//   }
+
+//   goToList(e) {}
+
+//   render() {
+//     const { title, writer, content } = this.state;
+//     const { onChange, onSubmit, goToList } = this;
+
+//     return (
+//       <div>
+//         <h4>new Post</h4>
+//         <form onSubmit={onSubmit}>
+//           <div>
+//             <label>title</label>
+//             <input type="text" name="title" value={title} onChange={onChange} />
+//           </div>
+//           <div>
+//             <label>writer</label>
+//             <input
+//               type="text"
+//               name="writer"
+//               value={writer}
+//               onChange={onChange}
+//             />
+//           </div>
+//           <div>
+//             <label>content</label>
+//             <input
+//               type="text"
+//               name="content"
+//               value={content}
+//               onChange={onChange}
+//             />
+//           </div>
+//           <div>
+//             <button type="submit">작성</button>
+//           </div>
+//         </form>
+//         <Link href="/board/list">
+//           <button>목록으로</button>
+//         </Link>
+//       </div>
+//     );
+//   }
+// }
 
 export default PostBoard;
