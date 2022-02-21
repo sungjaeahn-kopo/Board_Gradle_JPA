@@ -3,7 +3,7 @@ import { createBoard, getBoard } from "../services/BoardService";
 import Boards from "./Boards";
 import DisplayBoard from "./DisplayBoard";
 import { Header } from "./Header";
-import PostBoard from "./PostBoard";
+import { PostBoard } from "./PostBoard";
 
 const App = () => {
   //   const [board, setBoard] = useState({});
