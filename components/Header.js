@@ -77,8 +77,9 @@ export const Header = () => {
     });
     console.log("router pathname ::: ", router.pathname);
     console.log("boards ::: ", boards);
+    // console.log("numberOfBoards ::: ", numberOfBoards);
     return () => {};
-  }, []);
+  }, [boards, numberOfBoards]);
 
   const showComponent = () => {
     console.log("show Component", router.pathname);

@@ -8,16 +8,16 @@ const BoardList = () => {
   const [boards, setBoards] = useState([]);
   const [numberOfBoards, setNumberOfBoards] = useState(0);
 
-  useEffect(() => {
-    getBoard().then((response) => {
-      console.log(response);
-      console.log("타입 : ", typeof response);
-      setBoards(response);
-      setNumberOfBoards(response.length);
-      console.log("boards ::: ", boards);
-    });
-    return () => {};
-  });
+  // useEffect(() => {
+  //   getBoard().then((response) => {
+  //     console.log(response);
+  //     console.log("타입 : ", typeof response);
+  //     setBoards(response);
+  //     setNumberOfBoards(response.length);
+  //     console.log("boards ::: ", boards);
+  //   });
+  //   return () => {};
+  // }, [boards]);
 
   return (
     <>

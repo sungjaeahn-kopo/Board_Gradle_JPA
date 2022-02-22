@@ -45,7 +45,6 @@ const PostBoard = () => {
   }
 
   function onSubmit(e) {
-    // e.preventDefault();
     console.log("before onSubmit ::: ", inputs);
     console.log("title ::: ", title.value);
     console.log("writer ::: ", writer.value);
@@ -55,7 +54,6 @@ const PostBoard = () => {
       title: title.value,
       writer: writer.value,
       content: content.value,
-      // ...inputs,
       // [e.target.name]: e.target.value,
     });
     // setInputs({
@@ -99,8 +97,6 @@ const PostBoard = () => {
       </Form.Item>
       <Form.Item
         label="Title"
-        // type="text"
-        // id="title"
         name="title"
         value={inputs.title}
         onChange={onChange}
@@ -109,8 +105,6 @@ const PostBoard = () => {
       </Form.Item>
       <Form.Item
         label="Writer"
-        // type="text"
-        // id="writer"
         name="writer"
         value={inputs.writer}
         onChange={onChange}
@@ -119,8 +113,6 @@ const PostBoard = () => {
       </Form.Item>
       <Form.Item
         label="Content"
-        // type="text"
-        // id="content"
         name="content"
         value={inputs.content}
         onChange={onChange}
