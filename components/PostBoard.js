@@ -20,7 +20,7 @@ const PostBoard = () => {
     content: "",
   });
   // 비구조화 할당
-  const { title, writer, content } = inputs;
+  // const { title, writer, content } = inputs;
 
   // antd
   const [componentSize, setComponentSize] = useState("default");
@@ -31,20 +31,37 @@ const PostBoard = () => {
 
   function onChange(e) {
     // e.target에서 값 추출
-    const { value, name } = e.target;
+    console.log("onChange ::: ", title.value, writer.value, content.value);
     setInputs({
       ...inputs, // 기존 input 객체 복사
-      [name]: value, // name 키를 가진 값을 value로 설정
+      // [e.target.name]: e.target.value, // name 키를 가진 값을 value로 설정
+      // setTitle(title),
+      // setWriter(writer),
+      // setContent(content)
+      title: title.value,
+      writer: writer.value,
+      content: content.value,
     });
   }
 
   function onSubmit(e) {
-    e.preventDefault();
-    const { value, name } = e.target;
+    // e.preventDefault();
+    console.log("before onSubmit ::: ", inputs);
+    console.log("title ::: ", title.value);
+    console.log("writer ::: ", writer.value);
+    console.log("content ::: ", content.value);
     setInputs({
-      ...inputs, // 기존 input 객체 복사
-      [name]: value, // name 키를 가진 값을 value로 설정
+      ...inputs,
+      title: title.value,
+      writer: writer.value,
+      content: content.value,
+      // ...inputs,
+      // [e.target.name]: e.target.value,
     });
+    // setInputs({
+    //   ...inputs, // 기존 input 객체 복사
+    //   // [e.target.name]: e.target.value, // name 키를 가진 값을 value로 설정
+    // });
 
     fetch("/api/save", {
       method: "POST",
@@ -71,38 +88,41 @@ const PostBoard = () => {
       }}
       onValuesChange={onFormLayoutChange}
       size={componentSize}
-      onSubmit={onSubmit}
+      onFinish={onSubmit}
     >
       <Form.Item label="Form Size" name="size">
         <Radio.Group>
-          <Radio.Button value="small">Small</Radio.Button>
+          {/* <Radio.Button value="small">Small</Radio.Button> */}
           <Radio.Button value="default">Default</Radio.Button>
-          <Radio.Button value="large">Large</Radio.Button>
+          {/* <Radio.Button value="large">Large</Radio.Button> */}
         </Radio.Group>
       </Form.Item>
       <Form.Item
         label="Title"
-        type="text"
+        // type="text"
+        // id="title"
         name="title"
-        value={title}
+        value={inputs.title}
         onChange={onChange}
       >
         <Input />
       </Form.Item>
       <Form.Item
         label="Writer"
-        type="text"
+        // type="text"
+        // id="writer"
         name="writer"
-        value={writer}
+        value={inputs.writer}
         onChange={onChange}
       >
         <Input />
       </Form.Item>
       <Form.Item
         label="Content"
-        type="text"
+        // type="text"
+        // id="content"
         name="content"
-        value={content}
+        value={inputs.content}
         onChange={onChange}
       >
         <Input />
@@ -154,7 +174,9 @@ const PostBoard = () => {
         <Switch />
       </Form.Item>
       <Form.Item label="Button">
-        <Button type="submit">Submit</Button>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
       </Form.Item>
     </Form>
 
