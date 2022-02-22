@@ -88,10 +88,10 @@ const PostBoard = () => {
       size={componentSize}
       onFinish={onSubmit}
     >
-      <Form.Item label="Form Size" name="size">
+      <Form.Item name="size">
         <Radio.Group>
           {/* <Radio.Button value="small">Small</Radio.Button> */}
-          <Radio.Button value="default">Default</Radio.Button>
+          <Radio.Button value="default">Posting a Board</Radio.Button>
           {/* <Radio.Button value="large">Large</Radio.Button> */}
         </Radio.Group>
       </Form.Item>
@@ -119,7 +119,7 @@ const PostBoard = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item label="Select">
+      {/* <Form.Item label="Select">
         <Select>
           <Select.Option value="demo">Demo</Select.Option>
         </Select>
@@ -164,8 +164,8 @@ const PostBoard = () => {
       </Form.Item>
       <Form.Item label="Switch" valuePropName="checked">
         <Switch />
-      </Form.Item>
-      <Form.Item label="Button">
+      </Form.Item> */}
+      <Form.Item>
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
