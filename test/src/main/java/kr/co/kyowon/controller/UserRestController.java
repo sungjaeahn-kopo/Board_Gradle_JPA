@@ -11,24 +11,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.kyowon.repository.BoardRepository;
+import kr.co.kyowon.repository.UserRepository;
 import kr.co.kyowon.vo.Board;
+import kr.co.kyowon.vo.User;
 
 @RestController
 @RequestMapping("/api")
-public class BoardRestController {
+public class UserRestController {
 
 	@Autowired
-	public BoardRepository boardRepository;
+	public UserRepository userRepository;
 	
-	@GetMapping("/board")
-	public List<Board> getAllBoard() {
-		return boardRepository.findAll();
+	@GetMapping("/user/list")
+	public List<User> getAllUser() {
+		return userRepository.findAll();
 	}
 	
-	@PostMapping("/save")
-	public ResponseEntity<Board> saveBoard(@RequestBody Board board) {
-		System.out.println("board 받아오는지? : " + board.getContent());
-		boardRepository.save(board);
-		return ResponseEntity.ok().body(board);
+	@PostMapping("/user/save")
+	public ResponseEntity<User> saveUser(@RequestBody User user) {
+		System.out.println("board 받아오는지? : " + user.getCustomerId());
+		userRepository.save(user);
+		return ResponseEntity.ok().body(user);
 	}
 }
