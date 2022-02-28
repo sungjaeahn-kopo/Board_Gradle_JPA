@@ -18,6 +18,9 @@ import { Route, Router, Switch } from "react-router-dom";
 import { useRouter } from "next/router";
 import { BrowserRouter } from "react-router-dom";
 import Item from "antd/lib/list/Item";
+import { getUser } from "../services/UserService";
+import User from "./User";
+import SignIn from "./SignIn";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // function TabPanel(props) {
@@ -67,6 +70,7 @@ export const Header = () => {
   // const [board, setBoard] = useState({});
   const [boards, setBoards] = useState([]);
   const [numberOfBoards, setNumberOfBoards] = useState(0);
+  const [user, setUser] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -74,6 +78,11 @@ export const Header = () => {
       setBoards(response);
       setNumberOfBoards(response.length);
       console.log(response);
+    });
+
+    getUser().then((result) => {
+      setUser(result);
+      console.log(result);
     });
     console.log("router pathname ::: ", router.pathname);
     console.log("boards ::: ", boards);
@@ -85,7 +94,8 @@ export const Header = () => {
     console.log("show Component", router.pathname);
     if (router.pathname === "/board/list") return <Boards boards={boards} />;
     else if (router.pathname === "/board/save") return <PostBoard />;
-    else if (router.pathname === "/user/list") return <User user={user} />;
+    else if (router.pathname === "/user/userList") return <User user={user} />;
+    else if (router.pathname === "/user/signIn") return <SignIn />;
     else return "home";
   };
   // function ChangeMenu(props) {
@@ -124,8 +134,11 @@ export const Header = () => {
           <Menu.Item key="/board/save">
             <Link href="/board/save">BoardPost</Link>
           </Menu.Item>
-          <Menu.Item key="/user/login" labelAlign={"right"}>
-            <Link href="/user/login">Login</Link>
+          <Menu.Item key="/user/userList" labelAlign={"right"}>
+            <Link href="/user/userList">UserList</Link>
+          </Menu.Item>
+          <Menu.Item key="/user/signIn" labelAlign={"right"}>
+            <Link href="/user/signIn">SignIn</Link>
           </Menu.Item>
         </Menu>
       </Header>
