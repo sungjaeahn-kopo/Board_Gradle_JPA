@@ -29,7 +29,7 @@ public class UserRestController {
 	
 	@PostMapping("/user/save")
 	public ResponseEntity<User> saveUser(@RequestBody User user) {
-		System.out.println("board 받아오는지? : " + user.getCustomerId());
+		System.out.println("user 받아오는지? : " + user.getCustomerId());
 		userRepository.save(user);
 		return ResponseEntity.ok().body(user);
 	}
