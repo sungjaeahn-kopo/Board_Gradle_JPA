@@ -79,12 +79,13 @@ export const Header = () => {
     console.log("boards ::: ", boards);
     // console.log("numberOfBoards ::: ", numberOfBoards);
     return () => {};
-  }, [boards, numberOfBoards]);
+  }, []);
 
   const showComponent = () => {
     console.log("show Component", router.pathname);
     if (router.pathname === "/board/list") return <Boards boards={boards} />;
     else if (router.pathname === "/board/save") return <PostBoard />;
+    else if (router.pathname === "/user/list") return <User user={user} />;
     else return "home";
   };
   // function ChangeMenu(props) {
@@ -122,6 +123,9 @@ export const Header = () => {
           </Menu.Item>
           <Menu.Item key="/board/save">
             <Link href="/board/save">BoardPost</Link>
+          </Menu.Item>
+          <Menu.Item key="/user/login" labelAlign={"right"}>
+            <Link href="/user/login">Login</Link>
           </Menu.Item>
         </Menu>
       </Header>
