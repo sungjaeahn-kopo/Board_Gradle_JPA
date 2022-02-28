@@ -36,7 +36,7 @@ public class User {
     private String customerId;
 
     @Column(length = 20, nullable = false)
-    private String name;
+    private String customerName;
 
     @Column(length = 20, nullable = false)
     private String password;
@@ -62,10 +62,10 @@ public class User {
 //    private Long cnt;
     
     @Builder
-    public User(Long customerNo, String customerId, String name, String password, LocalDateTime signDate, LocalDateTime updateDate) {
+    public User(Long customerNo, String customerId, String customerName, String password, LocalDateTime signDate, LocalDateTime updateDate) {
     	this.customerNo = customerNo;
     	this.customerId = customerId;
-    	this.name = name;
+    	this.customerName = customerName;
     	this.password = password;
     	this.signDate = signDate;
     	this.updateDate = updateDate;

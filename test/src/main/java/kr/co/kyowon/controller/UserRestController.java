@@ -22,12 +22,12 @@ public class UserRestController {
 	@Autowired
 	public UserRepository userRepository;
 	
-	@GetMapping("/user/list")
+	@GetMapping("/user/userList")
 	public List<User> getAllUser() {
 		return userRepository.findAll();
 	}
 	
-	@PostMapping("/user/save")
+	@PostMapping("/user/signIn")
 	public ResponseEntity<User> saveUser(@RequestBody User user) {
 		System.out.println("user 받아오는지? : " + user.getCustomerId());
 		userRepository.save(user);
