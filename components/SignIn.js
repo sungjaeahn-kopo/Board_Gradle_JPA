@@ -10,7 +10,6 @@ import {
   Switch,
   TreeSelect,
 } from "antd";
-// import Link from "next/link";
 import React, { useState } from "react";
 
 const SignIn = () => {
@@ -55,7 +54,7 @@ const SignIn = () => {
       password: password.value,
     });
 
-    fetch("/user/save", {
+    fetch("/api/user/signIn", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -68,7 +67,7 @@ const SignIn = () => {
 
   return (
     <Form
-      lablCol={{
+      labelCol={{
         span: 4,
       }}
       wrapperCol={{

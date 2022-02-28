@@ -74,7 +74,7 @@ const PostBoard = () => {
 
   return (
     <Form
-      lablCol={{
+      labelCol={{
         span: 4,
       }}
       wrapperCol={{

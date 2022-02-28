@@ -86,6 +86,7 @@ export const Header = () => {
     });
     console.log("router pathname ::: ", router.pathname);
     console.log("boards ::: ", boards);
+    console.log("user ::: ", user);
     // console.log("numberOfBoards ::: ", numberOfBoards);
     return () => {};
   }, []);
@@ -134,10 +135,10 @@ export const Header = () => {
           <Menu.Item key="/board/save">
             <Link href="/board/save">BoardPost</Link>
           </Menu.Item>
-          <Menu.Item key="/user/userList" labelAlign={"right"}>
+          <Menu.Item key="/user/userList">
             <Link href="/user/userList">UserList</Link>
           </Menu.Item>
-          <Menu.Item key="/user/signIn" labelAlign={"right"}>
+          <Menu.Item key="/user/signIn">
             <Link href="/user/signIn">SignIn</Link>
           </Menu.Item>
         </Menu>

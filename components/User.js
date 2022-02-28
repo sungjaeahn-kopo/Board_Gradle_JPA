@@ -14,9 +14,9 @@ const User = ({ user }) => {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
+      title: "CustomerName",
+      dataIndex: "customerName",
+      key: "customerName",
     },
     {
       title: "Password",
