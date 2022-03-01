@@ -54,15 +54,17 @@ const SignIn = () => {
       password: password.value,
     });
 
-    fetch("/api/user/signIn", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(inputs),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    if (inputs.length !== 0) {
+      fetch("/api/user/signIn", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
   }
 
   return (
