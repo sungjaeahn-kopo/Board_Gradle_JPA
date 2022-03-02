@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import kr.co.kyowon.vo.Board;
+import kr.co.kyowon.vo.User;
 import lombok.*;
 
 @Getter
@@ -16,6 +17,7 @@ public class BoardDao {
 	private String title;
 	private String writer;
 	private String content;
+	private User user;
 	private LocalDateTime createDate;
 	private LocalDateTime updateDate;
 	private Long cnt;
@@ -26,6 +28,7 @@ public class BoardDao {
 				.title(title)
 				.writer(writer)
 				.content(content)
+				.user(user)
 				.createDate(createDate)
 				.updateDate(updateDate)
 				.cnt(cnt)
@@ -34,11 +37,12 @@ public class BoardDao {
 	}
 	
     @Builder
-    public BoardDao(Long seq, String title, String writer, String content, LocalDateTime createDate, LocalDateTime updateDate, Long cnt) {
+    public BoardDao(Long seq, String title, String writer, String content, User user,LocalDateTime createDate, LocalDateTime updateDate, Long cnt) {
     	this.seq = seq;
     	this.title = title;
     	this.writer = writer;
     	this.content = content;
+    	this.user = user;
     	this.createDate = createDate;
     	this.updateDate = updateDate;
     	this.cnt = cnt;

@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'javax.servlet:jstl:1.2'
 	compileOnly 'org.projectlombok:lombok:1.18.22'
+	compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4'
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
 	testCompileOnly 'org.projectlombok:lombok:1.18.22'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'

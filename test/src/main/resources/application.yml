@@ -5,7 +5,7 @@ spring:
         default-page-size: 10
         one-indexed-parameters: true
   datasource:
-    url: jdbc:mariadb://localhost:3306/board_spa
+    url: jdbc:mariadb://localhost:3306/board_spa?useUnicode=true&characterEncoding=utf8
     driver-class-name: org.mariadb.jdbc.Driver
     username: root
     password: 38119
@@ -15,7 +15,7 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: update   
+      ddl-auto: create   
   mvc:
     view:
       prefix: /WEB-INF/jsp/

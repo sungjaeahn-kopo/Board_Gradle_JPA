@@ -5,12 +5,17 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -24,18 +29,25 @@ import lombok.NoArgsConstructor;
 public class Board {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "board_id")
     // primary key
     private Long seq;
     
     @Column(length = 20, nullable = false)
     private String title;
 
-    @Column(length = 20, nullable = true)
+//    @ManyToOne
+//    @JoinColumn(name = "user_customerId", updatable = false)
+    @Column(length = 20, nullable = false)
     private String writer;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
+    
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
     // 211103 09:37 datatype : date => LocalDateTime
     // Entity가 생성되어 저장시 시간 자동저장
@@ -49,16 +61,17 @@ public class Board {
     @Column(nullable=true, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     private LocalDateTime updateDate;
 
-    @Column(nullable=true)
+//    @Column(nullable=true, columnDefinition = "INTEGER default 0")
     @ColumnDefault("0")
     private Long cnt;
     
     @Builder
-    public Board(Long seq, String title, String writer, String content, LocalDateTime createDate, LocalDateTime updateDate, Long cnt) {
+    public Board(Long seq, String title, String writer, String content, User user, LocalDateTime createDate, LocalDateTime updateDate, Long cnt) {
     	this.seq = seq;
     	this.title = title;
     	this.writer = writer;
     	this.content = content;
+    	this.user = user;
     	this.createDate = createDate;
     	this.updateDate = updateDate;
     	this.cnt = cnt;
