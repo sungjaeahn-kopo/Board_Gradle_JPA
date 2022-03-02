@@ -10,10 +10,13 @@ import {
   Switch,
   TreeSelect,
 } from "antd";
+import { useRouter } from "next/router";
 // import Link from "next/link";
 import React, { useState } from "react";
 
 const PostBoard = () => {
+  const router = useRouter();
+
   const [inputs, setInputs] = useState({
     title: "",
     writer: "",
@@ -70,6 +73,8 @@ const PostBoard = () => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+
+    router.push("/board/list");
   }
 
   return (
