@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { getBoard } from "../services/BoardService";
 import { Table, Tag, Space } from "antd";
 
 const Boards = ({ boards }) => {
