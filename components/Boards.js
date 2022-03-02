@@ -1,6 +1,9 @@
 import { Table, Tag, Space } from "antd";
+import React, { useEffect, useState } from "react";
+import { getBoard } from "../services/BoardService";
 
-const Boards = ({ boards }) => {
+// const Boards = ({ boards }) => {
+const Boards = () => {
   const columns = [
     {
       title: "Seq",
@@ -71,6 +74,22 @@ const Boards = ({ boards }) => {
     //   ),
     // },
   ];
+
+  const [boards, setBoards] = useState([]);
+  const [numberOfBoards, setNumberOfBoards] = useState(0);
+
+  useEffect(() => {
+    getBoard().then((response) => {
+      setBoards(response);
+      setNumberOfBoards(response.length);
+      console.log(response);
+    });
+
+    // console.log("router pathname ::: ", router.pathname);
+    console.log("boards ::: ", boards);
+    // console.log("user ::: ", user);
+    // console.log("numberOfBoards ::: ", numberOfBoards);
+  }, []);
 
   console.log("boards length ::: ", boards.length);
   if (boards.length === 0) return null;

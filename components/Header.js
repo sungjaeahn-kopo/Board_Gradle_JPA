@@ -13,12 +13,8 @@ import {
 import App from "./App";
 import Boards from "./Boards";
 import PostBoard from "./PostBoard";
-import { getBoard } from "../services/BoardService";
-import { Route, Router, Switch } from "react-router-dom";
 import { useRouter } from "next/router";
-import { BrowserRouter } from "react-router-dom";
 import Item from "antd/lib/list/Item";
-import { getUser } from "../services/UserService";
 import User from "./User";
 import SignIn from "./SignIn";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -57,45 +53,16 @@ import SignIn from "./SignIn";
 // }
 
 export const Header = () => {
-  // const [value, setValue] = useState(0);
-
-  // const handleChange = (event, newValue) => {
-  //     setValue(newValue);
-  // };
-
   // layout by antd
   const { SubMenu } = Menu;
   const { Header, Content, Sider } = Layout;
-
-  // const [board, setBoard] = useState({});
-  const [boards, setBoards] = useState([]);
-  const [numberOfBoards, setNumberOfBoards] = useState(0);
-  const [user, setUser] = useState([]);
   const router = useRouter();
-
-  useEffect(() => {
-    getBoard().then((response) => {
-      setBoards(response);
-      setNumberOfBoards(response.length);
-      console.log(response);
-    });
-
-    getUser().then((result) => {
-      setUser(result);
-      console.log(result);
-    });
-    console.log("router pathname ::: ", router.pathname);
-    console.log("boards ::: ", boards);
-    console.log("user ::: ", user);
-    // console.log("numberOfBoards ::: ", numberOfBoards);
-    return () => {};
-  }, []);
 
   const showComponent = () => {
     console.log("show Component", router.pathname);
-    if (router.pathname === "/board/list") return <Boards boards={boards} />;
+    if (router.pathname === "/board/list") return <Boards />;
     else if (router.pathname === "/board/save") return <PostBoard />;
-    else if (router.pathname === "/user/userList") return <User user={user} />;
+    else if (router.pathname === "/user/userList") return <User />;
     else if (router.pathname === "/user/signIn") return <SignIn />;
     else return "home";
   };

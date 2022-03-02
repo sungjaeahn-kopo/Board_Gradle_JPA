@@ -1,6 +1,8 @@
 import { Table, Tag, Space } from "antd";
+import { useEffect } from "react";
+import { getUser } from "../services/UserService";
 
-const User = ({ user }) => {
+const User = () => {
   const columns = [
     {
       title: "CustomerNo",
@@ -39,6 +41,17 @@ const User = ({ user }) => {
 
   console.log("user length ::: ", user.length);
   if (user.length === 0) return null;
+
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    getUser().then((result) => {
+      setUser(result);
+      console.log(result);
+    });
+    console.log("user ::: ", user);
+    return () => {};
+  }, []);
 
   return <Table columns={columns} dataSource={user} />;
 };
