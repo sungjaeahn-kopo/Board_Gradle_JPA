@@ -6,6 +6,8 @@ const Boards = ({ boards }) => {
       title: "Seq",
       dataIndex: "seq",
       key: "seq",
+      defaultSortOrder: "descend",
+      sorter: (a, b) => a.seq - b.seq,
     },
     {
       title: "Title",
