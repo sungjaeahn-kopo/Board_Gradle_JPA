@@ -6,6 +6,8 @@ const User = ({ user }) => {
       title: "CustomerNo",
       dataIndex: "customerNo",
       key: "customerNo",
+      defaultSortOrder: "descend",
+      sorter: (a, b) => a.customerNo - b.customerNo,
     },
     {
       title: "CustomerId",
