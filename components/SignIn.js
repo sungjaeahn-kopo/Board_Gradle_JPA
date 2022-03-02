@@ -10,9 +10,13 @@ import {
   Switch,
   TreeSelect,
 } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const SignIn = () => {
+  const router = useRouter();
+
   const [inputs, setInputs] = useState({
     customerId: "",
     customerName: "",
@@ -65,6 +69,7 @@ const SignIn = () => {
         .then((res) => res.json())
         .then((data) => console.log(data));
     }
+    router.push("/user/userList");
   }
 
   return (
