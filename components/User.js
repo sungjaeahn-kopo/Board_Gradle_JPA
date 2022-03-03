@@ -1,5 +1,5 @@
-import { Table, Tag, Space } from "antd";
-import { useEffect } from "react";
+import { Table, Tag, Space, Skeleton } from "antd";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { getUser } from "../services/UserService";
 
 const User = () => {
@@ -39,19 +39,20 @@ const User = () => {
     },
   ];
 
-  console.log("user length ::: ", user.length);
-  if (user.length === 0) return null;
-
   const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState("false");
 
   useEffect(() => {
-    getUser().then((result) => {
-      setUser(result);
-      console.log(result);
+    setLoading("true");
+    console.log("!!!!!!!!!!!!!");
+    getUser().then((user) => {
+      setUser(user);
     });
-    console.log("user ::: ", user);
-    return () => {};
+    setLoading("false");
   }, []);
+
+  // console.log("user length ::: ", user.length);
+  // if (user.length === 0) return null;
 
   return <Table columns={columns} dataSource={user} />;
 };
