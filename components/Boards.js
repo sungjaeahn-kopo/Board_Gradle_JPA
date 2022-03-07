@@ -1,9 +1,15 @@
 import { Table, Tag, Space } from "antd";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { getBoard } from "../services/BoardService";
 
 // const Boards = ({ boards }) => {
 const Boards = () => {
+  const [boards, setBoards] = useState([]);
+  const [numberOfBoards, setNumberOfBoards] = useState(0);
+  const router = useRouter();
+  const [mapping, setMapping] = useState({});
+
   const columns = [
     {
       title: "Seq",
@@ -16,7 +22,17 @@ const Boards = () => {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      render: (text) => <a>{text}</a>,
+      render: (text) => (
+        <a
+          onClick={() => {
+            console.log("board.seq ::: ", boards.title);
+            router.push(`/board/${mapping[text]}`);
+            console.log("seq ::: ", mapping[text]);
+          }}
+        >
+          {text}
+        </a>
+      ),
     },
     {
       title: "Writer",
@@ -75,14 +91,17 @@ const Boards = () => {
     // },
   ];
 
-  const [boards, setBoards] = useState([]);
-  const [numberOfBoards, setNumberOfBoards] = useState(0);
-
   useEffect(() => {
     getBoard().then((response) => {
       setBoards(response);
       setNumberOfBoards(response.length);
+      console.log("response");
       console.log(response);
+      var mappingTemp = {};
+      for (var i = 0; i < response.length; i++) {
+        mappingTemp[response[i].title] = response[i].seq;
+      }
+      setMapping(mappingTemp);
     });
 
     // console.log("router pathname ::: ", router.pathname);
@@ -91,6 +110,7 @@ const Boards = () => {
     // console.log("numberOfBoards ::: ", numberOfBoards);
   }, []);
 
+  console.log("boards.seq ::: ", boards);
   console.log("boards length ::: ", boards.length);
   if (boards.length === 0) return null;
 
