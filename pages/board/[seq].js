@@ -1,7 +1,13 @@
-import { useRouter } from "next/router";
+import { Layout } from "antd";
+import { withRouter } from "next/router";
 
-export default function Detail({ seq }) {
-  const router = useRouter();
+const Detail = ({ router }) => {
+  return (
+    <Layout title={router.query.seq}>
+      {router.query.seq}
+      {router.query.title}
+    </Layout>
+  );
+};
 
-  return <></>;
-}
+export default withRouter(Detail);

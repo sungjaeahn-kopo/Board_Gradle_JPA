@@ -1,4 +1,5 @@
 import { Table, Tag, Space } from "antd";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { getBoard } from "../services/BoardService";
@@ -23,15 +24,16 @@ const Boards = () => {
       dataIndex: "title",
       key: "title",
       render: (text) => (
-        <a
-          onClick={() => {
-            console.log("board.seq ::: ", boards.title);
-            router.push(`/board/${mapping[text]}`);
-            console.log("seq ::: ", mapping[text]);
-          }}
+        <Link
+          href={`/board/${mapping[text]}`}
+          // onClick={() => {
+          //   console.log("board.seq ::: ", boards.title);
+          //   router.push(`/board/${mapping[text]}`);
+          //   console.log("seq ::: ", mapping[text]);
+          // }}
         >
           {text}
-        </a>
+        </Link>
       ),
     },
     {
