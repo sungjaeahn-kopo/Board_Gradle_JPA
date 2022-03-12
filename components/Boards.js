@@ -44,8 +44,11 @@ const Boards = () => {
           href={{
             pathname: `/board/${mapping[text]}`,
             query: {
-              // boards: boards[3].title,
-              boards: JSON.stringify(boards),
+              // boards: boards[`${mapping[text]}` - 1],
+              // boards: boards[`${mapping[text]}` - 1],
+              // boards: boards[`${mapping[text]}` - 1],
+              boards: JSON.stringify(boards[`${mapping[text]}` - 1]),
+              // boards: JSON.stringify(boards[0]),
             },
           }}
           // as={`/board/${mapping[text]}`}
