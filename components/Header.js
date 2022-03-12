@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import Item from "antd/lib/list/Item";
 import User from "./User";
 import SignIn from "./SignIn";
+import BoardDetail from "./BoardDetail";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // function TabPanel(props) {
@@ -64,6 +65,7 @@ export const Header = () => {
     else if (router.pathname === "/board/save") return <PostBoard />;
     else if (router.pathname === "/user/userList") return <User />;
     else if (router.pathname === "/user/signIn") return <SignIn />;
+    else if (router.pathname === "/board/") return <BoardDetail />;
     else return "home";
   };
   // function ChangeMenu(props) {

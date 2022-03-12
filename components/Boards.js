@@ -8,8 +8,23 @@ import { getBoard } from "../services/BoardService";
 const Boards = () => {
   const [boards, setBoards] = useState([]);
   const [numberOfBoards, setNumberOfBoards] = useState(0);
-  const router = useRouter();
+  // const router = useRouter();
   const [mapping, setMapping] = useState({});
+
+  // const onClick = (seq, writer) => {
+  //   // console.log("title ::: ", columns.seq);
+  //   router.push(
+  //     {
+  //       pathname: `/board/${seq}`,
+  //       query: {
+  //         seq,
+  //         // title: "potatos",
+  //         writer: writer,
+  //       },
+  //     }
+  //     // `/board/${seq}`
+  //   );
+  // };
 
   const columns = [
     {
@@ -25,14 +40,31 @@ const Boards = () => {
       key: "title",
       render: (text) => (
         <Link
-          href={`/board/${mapping[text]}`}
+          // board={boards[`{mapping[text]}`].content}
+          href={{
+            pathname: `/board/${mapping[text]}`,
+            query: {
+              boards: boards,
+            },
+          }}
+          // as={`/board/${mapping[text]}`}
+
+          // as={`/board/${mapping[text]}`}
           // onClick={() => {
           //   console.log("board.seq ::: ", boards.title);
+          // router.push : 클라이언트사이드렌더링
           //   router.push(`/board/${mapping[text]}`);
           //   console.log("seq ::: ", mapping[text]);
           // }}
         >
-          {text}
+          <a
+          // onClick={() => {
+          //   console.log("columns ::: ", `${columns["title"]}`);
+          //   onClick(`${mapping[text]}`, `${columns}`);
+          // }}
+          >
+            {text}
+          </a>
         </Link>
       ),
     },
@@ -133,7 +165,7 @@ const Boards = () => {
   //     );
   //   };
 
-  //   const boardTable = boards.map((board, index) => BoardRow(board, index));
+  // const boardTable = boards.map((board, index) => BoardRow(board, index));
 
   return (
     // <>
@@ -150,7 +182,21 @@ const Boards = () => {
     //     <tbody>{boardTable}</tbody>
     //   </table>
     // </>
-    <Table columns={columns} dataSource={boards} />
+    // <Table columns={columns} dataSource={boards} />
+    <Table
+      // onRow={(boards, rowIndex) => {
+      //   return {
+      //     onClick: (event) => {},
+      //   };
+      // }}
+      // onHeaderRow={(columns, index) => {
+      //   return {
+      //     onClick: () => {},
+      //   };
+      // }}
+      columns={columns}
+      dataSource={boards}
+    />
   );
 };
 
