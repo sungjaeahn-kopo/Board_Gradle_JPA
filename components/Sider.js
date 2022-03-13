@@ -1,4 +1,13 @@
+import {
+  LaptopOutlined,
+  NotificationOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Layout, Menu } from "antd";
+
 export const Sider = () => {
+  const { SubMenu } = Menu;
+  const { Sider } = Layout;
   return (
     <Sider width={200} className="site-layout-background">
       <Menu
