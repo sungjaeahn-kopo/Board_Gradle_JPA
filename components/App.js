@@ -24,17 +24,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      {/* <div className="container mrgnbtm">
-        <div className="row">
-          <div className="col-md-8">{/* <PostBoard/> */}
     </div>
-    //       <div className="col-md-4"></div>
-    //     </div>
-    //   </div>
-    //   <div className="row mrgbtm">
-    // {/* <Boards boards={boards}></Boards> */}
-    //   </div> */}
-    // </div>
   );
 };
 

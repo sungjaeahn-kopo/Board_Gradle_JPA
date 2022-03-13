@@ -10,6 +10,7 @@ import BoardDetail from "./BoardDetail";
 import { NavBar } from "./NavBar";
 import { Sider } from "./Sider";
 import { BoardBreadcrumb } from "./BoardBreadcrumb";
+import { Home } from "./Home";
 
 export const Header = () => {
   // layout by antd
@@ -24,7 +25,7 @@ export const Header = () => {
     else if (router.pathname === "/user/userList") return <User />;
     else if (router.pathname === "/user/signIn") return <SignIn />;
     else if (router.pathname === "/board/") return <BoardDetail />;
-    else return "home";
+    else return <Home />;
   };
 
   return (
