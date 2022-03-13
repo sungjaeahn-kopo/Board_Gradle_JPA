@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 import { Tab, Tabs } from "@material-ui/core";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import {
   LaptopOutlined,
   NotificationOutlined,
@@ -20,6 +20,7 @@ import SignIn from "./SignIn";
 import BoardDetail from "./BoardDetail";
 import { NavBar } from "./NavBar";
 import { Sider } from "./Sider";
+import { Breadcrumb } from "./Breadcrumb";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // function TabPanel(props) {
@@ -59,7 +60,7 @@ export const Header = () => {
   // layout by antd
   const { SubMenu } = Menu;
   // const { Header, Content, Sider } = Layout;
-  const { Header, Content } = Layout;
+  const { Content } = Layout;
   const router = useRouter();
 
   const showComponent = () => {
@@ -93,11 +94,7 @@ export const Header = () => {
       <Layout>
         <Sider />
         <Layout style={{ padding: "0 24px 24px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+          <Breadcrumb />
           <Content
             className="site-layout-background"
             style={{
