@@ -18,6 +18,7 @@ import Item from "antd/lib/list/Item";
 import User from "./User";
 import SignIn from "./SignIn";
 import BoardDetail from "./BoardDetail";
+import { NavBar } from "./NavBar";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // function TabPanel(props) {
@@ -86,32 +87,7 @@ export const Header = () => {
 
   return (
     <Layout>
-      <Header className="header">
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          //   defaultSelectedKeys={["1"]}
-          selectedKeys={[router.pathname]}
-          // onClick={ChangeMenu}
-        >
-          <Menu.Item key="/">
-            <Link href="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="/board/list">
-            <Link href="/board/list">BoardList</Link>
-          </Menu.Item>
-          <Menu.Item key="/board/save">
-            <Link href="/board/save">BoardPost</Link>
-          </Menu.Item>
-          <Menu.Item key="/user/userList">
-            <Link href="/user/userList">UserList</Link>
-          </Menu.Item>
-          <Menu.Item key="/user/signIn">
-            <Link href="/user/signIn">SignIn</Link>
-          </Menu.Item>
-        </Menu>
-      </Header>
+      <NavBar />
       <Layout>
         <Sider width={200} className="site-layout-background">
           <Menu
