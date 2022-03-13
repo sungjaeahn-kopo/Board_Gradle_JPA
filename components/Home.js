@@ -6,7 +6,7 @@ const options = {
     type: "areaspline",
   },
   title: {
-    text: "My chart",
+    text: "Today's Number of Join",
   },
   legend: {
     layout: "vertical",

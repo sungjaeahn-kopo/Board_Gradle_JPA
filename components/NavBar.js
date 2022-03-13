@@ -2,7 +2,7 @@ import { Layout, Menu } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export const NavBar = () => {
+export const NavBar = ({ routerPath }) => {
   const { SubMenu } = Menu;
   const { Header } = Layout;
   const router = useRouter;
@@ -13,8 +13,9 @@ export const NavBar = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          //   defaultSelectedKeys={["1"]}
-          selectedKeys={[router.pathname]}
+          // defaultSelectedKeys={["1"]}
+          // selectedKeys={[router.pathname]}
+          selectedKeys={routerPath}
           // onClick={ChangeMenu}
         >
           <Menu.Item key="/">
