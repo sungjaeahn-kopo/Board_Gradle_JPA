@@ -1,6 +1,8 @@
 import { Breadcrumb } from "antd";
 
-export const BoardBreadcrumb = () => {
+export const BoardBreadcrumb = ({ routerPath }) => {
+  // const pathFirst = routerPath.split(" / ");
+
   return (
     <Breadcrumb style={{ margin: "16px 0" }}>
       <Breadcrumb.Item>Home</Breadcrumb.Item>

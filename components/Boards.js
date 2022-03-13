@@ -51,7 +51,7 @@ const Boards = () => {
               // boards: JSON.stringify(boards[0]),
             },
           }}
-          // as={`/board/${mapping[text]}`}
+          as={`/board/${mapping[text]}`}
 
           // as={`/board/${mapping[text]}`}
           // onClick={() => {

@@ -3,7 +3,6 @@ import { Layout, Menu } from "antd";
 import Boards from "./Boards";
 import PostBoard from "./PostBoard";
 import { useRouter } from "next/router";
-import Item from "antd/lib/list/Item";
 import User from "./User";
 import SignIn from "./SignIn";
 import BoardDetail from "./BoardDetail";
@@ -34,7 +33,7 @@ export const Header = () => {
       <Layout>
         <Sider />
         <Layout style={{ padding: "0 24px 24px" }}>
-          <BoardBreadcrumb />
+          <BoardBreadcrumb routerPath={[router.pathname]} />
           <Content
             className="site-layout-background"
             style={{
