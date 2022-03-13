@@ -1,16 +1,5 @@
-import Link from "next/link";
 import React, { Component, useEffect, useState } from "react";
-import { PropTypes } from "prop-types";
-import { Tab, Tabs } from "@material-ui/core";
-import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
 import { Layout, Menu } from "antd";
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-} from "@ant-design/icons/lib/icons";
-import App from "./App";
 import Boards from "./Boards";
 import PostBoard from "./PostBoard";
 import { useRouter } from "next/router";
@@ -20,46 +9,11 @@ import SignIn from "./SignIn";
 import BoardDetail from "./BoardDetail";
 import { NavBar } from "./NavBar";
 import { Sider } from "./Sider";
-import { Breadcrumb } from "./Breadcrumb";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-// function TabPanel(props) {
-//     const { children, value, index, ...other } = props;
-
-//     return (
-//         <div
-//             role="tabpanel"
-//             hidden={value !== index}
-//             id={`simple-tabpanel-${index}`}
-//             aria-labelledby={`simple-tab-${index}`}
-//             {...other}
-//             >
-//                 {value === index && (
-//                     <Box sx={{ p : 3 }}>
-//                         <Typography>{children}</Typography>
-//                     </Box>
-//                 )}
-//             </div>
-//     );
-// }
-
-// TabPanel.propTypes = {
-//     children : PropTypes.node,
-//     index : PropTypes.number.isRequired,
-//     value : PropTypes.number.isRequired
-// };
-
-// function a11yProps(index) {
-//     return {
-//         id : `simple-tab-${index}`,
-//         'aria-controls' : `simple-tabpanel-${index}`
-//     };
-// }
+import { BoardBreadcrumb } from "./BoardBreadcrumb";
 
 export const Header = () => {
   // layout by antd
   const { SubMenu } = Menu;
-  // const { Header, Content, Sider } = Layout;
   const { Content } = Layout;
   const router = useRouter();
 
@@ -72,21 +26,6 @@ export const Header = () => {
     else if (router.pathname === "/board/") return <BoardDetail />;
     else return "home";
   };
-  // function ChangeMenu(props) {
-
-  //     console.log('value ::: ', props)
-
-  //     switch(props) {
-  //         case '1' :
-  //             return <Link href="/" />;
-  //         case '2' :
-  //             return  <Link href="/board/list" />;
-  //         case '3' :
-  //             return <Link href="/board/save" />;
-  //         default :
-  //             return 'content';
-  //     }
-  // }
 
   return (
     <Layout>
@@ -94,7 +33,7 @@ export const Header = () => {
       <Layout>
         <Sider />
         <Layout style={{ padding: "0 24px 24px" }}>
-          <Breadcrumb />
+          <BoardBreadcrumb />
           <Content
             className="site-layout-background"
             style={{
@@ -104,25 +43,6 @@ export const Header = () => {
             }}
           >
             {showComponent()}
-            {/* <ChangeMenu key={Menu.Item.value} /> */}
-            {/* <Router>
-              <Switch> */}
-            {/* <Route exact path="/" component={App} /> */}
-            {/* <Route path="/board/list" component={Boards} /> */}
-            {/* <Route path="/board/save" component={PostBoard} /> */}
-            {/* </Switch>
-            </Router> */}
-
-            {/* <BrowserRouter>
-              <Router>
-                <Switch> */}
-            {/* <Route exact path="/" component={App} /> */}
-            {/* <Route path="/list" component={Boards} /> */}
-            {/* <Route path="/board/list" component={Boards} /> */}
-            {/* </Switch>
-              </Router>
-            </BrowserRouter> */}
-            {/* <Boards boards={boards}></Boards> */}
           </Content>
         </Layout>
       </Layout>
