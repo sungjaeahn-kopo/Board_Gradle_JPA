@@ -42,7 +42,8 @@ export const Header = () => {
               minHeight: 280,
             }}
           >
-            {showComponent()}
+            {/* {showComponent()} */}
+            <Home />
           </Content>
         </Layout>
       </Layout>
