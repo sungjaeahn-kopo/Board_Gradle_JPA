@@ -4,7 +4,7 @@ import Boards from "./Boards";
 import PostBoard from "./PostBoard";
 import { useRouter } from "next/router";
 import User from "./User";
-import SignIn from "./SignIn";
+import UserSignIn from "./UserSignIn";
 import BoardDetail from "./BoardDetail";
 import { NavBar } from "./NavBar";
 import { Sider } from "./Sider";
@@ -22,7 +22,7 @@ export const Header = () => {
     if (router.pathname === "/board/list") return <Boards />;
     else if (router.pathname === "/board/save") return <PostBoard />;
     else if (router.pathname === "/user/userList") return <User />;
-    else if (router.pathname === "/user/signIn") return <SignIn />;
+    else if (router.pathname === "/user/signIn") return <UserSignIn />;
     else if (router.pathname === "/board/") return <BoardDetail />;
     else return <Home />;
   };

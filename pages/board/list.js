@@ -1,12 +1,10 @@
 import { Layout } from "antd";
 import { Content } from "antd/lib/layout/layout";
-import { useEffect, useState } from "react";
 import { BoardBreadcrumb } from "../../components/BoardBreadcrumb";
 import Boards from "../../components/Boards";
 import { Header } from "../../components/Header";
 import { NavBar } from "../../components/NavBar";
 import { Sider } from "../../components/Sider";
-import { getBoard } from "../../services/BoardService";
 
 const BoardList = () => {
   // const [board, setBoard] = useState({});
@@ -45,7 +43,6 @@ const BoardList = () => {
           </Layout>
         </Layout>
       </Layout>
-      {/* <Header /> */}
     </>
   );
 };

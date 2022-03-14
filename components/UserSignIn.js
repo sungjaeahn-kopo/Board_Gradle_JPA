@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-const SignIn = () => {
+const UserSignIn = () => {
   const router = useRouter();
 
   const [inputs, setInputs] = useState({
@@ -202,4 +202,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default UserSignIn;
