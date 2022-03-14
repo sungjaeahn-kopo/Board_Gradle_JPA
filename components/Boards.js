@@ -1,6 +1,5 @@
 import { Table, Tag, Space } from "antd";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { getBoard } from "../services/BoardService";
 
@@ -8,23 +7,7 @@ import { getBoard } from "../services/BoardService";
 const Boards = () => {
   const [boards, setBoards] = useState([]);
   const [numberOfBoards, setNumberOfBoards] = useState(0);
-  // const router = useRouter();
   const [mapping, setMapping] = useState({});
-
-  // const onClick = (seq, writer) => {
-  //   // console.log("title ::: ", columns.seq);
-  //   router.push(
-  //     {
-  //       pathname: `/board/${seq}`,
-  //       query: {
-  //         seq,
-  //         // title: "potatos",
-  //         writer: writer,
-  //       },
-  //     }
-  //     // `/board/${seq}`
-  //   );
-  // };
 
   const columns = [
     {
@@ -44,8 +27,6 @@ const Boards = () => {
           href={{
             pathname: `/board/${mapping[text]}`,
             query: {
-              // boards: boards[`${mapping[text]}` - 1],
-              // boards: boards[`${mapping[text]}` - 1],
               // boards: boards[`${mapping[text]}` - 1],
               boards: JSON.stringify(boards[`${mapping[text]}` - 1]),
               // boards: JSON.stringify(boards[0]),
@@ -130,20 +111,19 @@ const Boards = () => {
   ];
 
   useEffect(() => {
-    getBoard().then((response) => {
-      setBoards(response);
-      setNumberOfBoards(response.length);
-      console.log("response");
-      console.log(response);
+    getBoard().then((boards) => {
+      setBoards(boards);
+      setNumberOfBoards(boards.length);
+      console.log("response ::: ", boards);
       var mappingTemp = {};
-      for (var i = 0; i < response.length; i++) {
-        mappingTemp[response[i].title] = response[i].seq;
+      for (var i = 0; i < boards.length; i++) {
+        mappingTemp[boards[i].title] = boards[i].seq;
       }
       setMapping(mappingTemp);
     });
 
-    // console.log("router pathname ::: ", router.pathname);
     console.log("boards ::: ", boards);
+    // console.log("router pathname ::: ", router.pathname);
     // console.log("user ::: ", user);
     // console.log("numberOfBoards ::: ", numberOfBoards);
   }, []);

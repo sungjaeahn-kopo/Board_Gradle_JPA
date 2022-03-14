@@ -1,12 +1,17 @@
+import { Layout } from "antd";
+import { Content } from "antd/lib/layout/layout";
 import { useEffect, useState } from "react";
+import { BoardBreadcrumb } from "../../components/BoardBreadcrumb";
 import Boards from "../../components/Boards";
 import { Header } from "../../components/Header";
+import { NavBar } from "../../components/NavBar";
+import { Sider } from "../../components/Sider";
 import { getBoard } from "../../services/BoardService";
 
 const BoardList = () => {
-  const [board, setBoard] = useState({});
-  const [boards, setBoards] = useState([]);
-  const [numberOfBoards, setNumberOfBoards] = useState(0);
+  // const [board, setBoard] = useState({});
+  // const [boards, setBoards] = useState([]);
+  // const [numberOfBoards, setNumberOfBoards] = useState(0);
 
   // useEffect(() => {
   //   getBoard().then((response) => {
@@ -21,8 +26,26 @@ const BoardList = () => {
 
   return (
     <>
-      <Header />
-      {/* <Boards boards={boards}></Boards> */}
+      <Layout>
+        <NavBar />
+        <Layout>
+          <Sider />
+          <Layout style={{ padding: "0 24px 24px" }}>
+            <BoardBreadcrumb />
+            <Content
+              className="site-layout-background"
+              style={{
+                padding: 30,
+                margin: 0,
+                minHeight: 280,
+              }}
+            >
+              <Boards />
+            </Content>
+          </Layout>
+        </Layout>
+      </Layout>
+      {/* <Header /> */}
     </>
   );
 };
