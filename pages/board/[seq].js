@@ -18,7 +18,7 @@ const Detail = () => {
   return (
     <>
       <Layout>
-        <NavBar />
+        <NavBar routerPath={[router.pathname]} />
         <Layout>
           <Sider />
           <Layout style={{ padding: "0 24px 24px" }}>

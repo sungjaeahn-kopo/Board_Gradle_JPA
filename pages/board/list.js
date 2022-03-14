@@ -2,9 +2,9 @@ import { Layout } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import { BoardBreadcrumb } from "../../components/BoardBreadcrumb";
 import Boards from "../../components/Boards";
-import { Header } from "../../components/Header";
 import { NavBar } from "../../components/NavBar";
 import { Sider } from "../../components/Sider";
+import { useRouter } from "next/router";
 
 const BoardList = () => {
   // const [board, setBoard] = useState({});
@@ -21,11 +21,11 @@ const BoardList = () => {
   //   });
   //   return () => {};
   // }, [boards]);
-
+  const router = useRouter();
   return (
     <>
       <Layout>
-        <NavBar />
+        <NavBar routerPath={[router.pathname]} />
         <Layout>
           <Sider />
           <Layout style={{ padding: "0 24px 24px" }}>

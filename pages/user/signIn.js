@@ -5,12 +5,14 @@ import { Header } from "../../components/Header";
 import { NavBar } from "../../components/NavBar";
 import { Sider } from "../../components/Sider";
 import UserSignIn from "../../components/UserSignIn";
+import { useRouter } from "next/router";
 
 export default function SignIn() {
+  const router = useRouter();
   return (
     <>
       <Layout>
-        <NavBar />
+        <NavBar routerPath={[router.pathname]} />
         <Layout>
           <Sider />
           <Layout style={{ padding: "0 24px 24px" }}>
