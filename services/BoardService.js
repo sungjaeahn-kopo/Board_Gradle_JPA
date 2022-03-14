@@ -1,11 +1,3 @@
-import axios from "axios";
-import { useRouter } from "next/router";
-import { useCallback } from "react";
-
-// export async function getBoard() {
-//     const response = await fetch('/api/board');
-//     return await response.json();
-// }
 export async function getBoard() {
   const response = await fetch("/api/board");
   return await response.json();

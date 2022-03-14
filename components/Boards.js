@@ -114,7 +114,6 @@ const Boards = () => {
     getBoard().then((boards) => {
       setBoards(boards);
       setNumberOfBoards(boards.length);
-      console.log("response ::: ", boards);
       var mappingTemp = {};
       for (var i = 0; i < boards.length; i++) {
         mappingTemp[boards[i].title] = boards[i].seq;
@@ -122,14 +121,14 @@ const Boards = () => {
       setMapping(mappingTemp);
     });
 
-    console.log("boards ::: ", boards);
+    // console.log("boards ::: ", boards);
     // console.log("router pathname ::: ", router.pathname);
     // console.log("user ::: ", user);
     // console.log("numberOfBoards ::: ", numberOfBoards);
-  }, []);
+  }, [boards]);
 
-  console.log("boards.seq ::: ", boards);
-  console.log("boards length ::: ", boards.length);
+  // console.log("boards.seq ::: ", boards);
+  // console.log("boards length ::: ", boards.length);
   if (boards.length === 0) return null;
 
   //   const onChange = () => {};
