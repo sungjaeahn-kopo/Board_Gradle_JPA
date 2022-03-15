@@ -125,7 +125,7 @@ const Boards = () => {
     // console.log("router pathname ::: ", router.pathname);
     // console.log("user ::: ", user);
     // console.log("numberOfBoards ::: ", numberOfBoards);
-  }, [boards]);
+  }, []);
 
   // console.log("boards.seq ::: ", boards);
   // console.log("boards length ::: ", boards.length);
