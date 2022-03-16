@@ -30,7 +30,6 @@ export default function SaveBoard() {
           </Layout>
         </Layout>
       </Layout>
-      {/* <Header /> */}
     </>
   );
 }
