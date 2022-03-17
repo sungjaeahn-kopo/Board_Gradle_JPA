@@ -1,7 +1,6 @@
 import { Layout } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import { BoardBreadcrumb } from "../../components/BoardBreadcrumb";
-import { Header } from "../../components/Header";
 import { NavBar } from "../../components/NavBar";
 import { Sider } from "../../components/Sider";
 import UserSignIn from "../../components/UserSignIn";

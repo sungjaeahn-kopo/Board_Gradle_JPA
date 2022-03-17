@@ -1,4 +1,3 @@
-import { Header } from "../../components/Header";
 import PostBoard from "../../components/PostBoard";
 import { Layout } from "antd";
 import { NavBar } from "../../components/NavBar";
