@@ -1,13 +1,11 @@
 package kr.co.kyowon.repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
-import kr.co.kyowon.vo.Board;
 import kr.co.kyowon.vo.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -20,5 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Page<User> findAll(Pageable pageable);
 //	Page<Board> findByWriternameContaining(String writer, Pageable pageable);
 //	Page<Board> findByContentContaining(String content, Pageable pageable);
+	
+	long countBySignDateBetween(LocalDateTime signDate, LocalDateTime signDateDay);
 	
 }

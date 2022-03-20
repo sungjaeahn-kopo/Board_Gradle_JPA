@@ -15,7 +15,7 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: create   
+      ddl-auto: update   
   mvc:
     view:
       prefix: /WEB-INF/jsp/
