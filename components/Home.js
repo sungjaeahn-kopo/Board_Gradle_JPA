@@ -7,10 +7,11 @@ const Home = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    getData().then((data) => {
-      setData(data);
+    getData().then((res) => {
+      setData(res);
     });
-  });
+    console.log(data);
+  }, [data]);
 
   const options = {
     chart: {
@@ -30,13 +31,13 @@ const Home = () => {
     },
     xAxis: {
       categories: [
+        "Sunday",
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday",
       ],
       plotBands: [
         {
@@ -66,7 +67,7 @@ const Home = () => {
     },
     series: [
       {
-        data: [{ data }, { data }, { data }],
+        data: [data],
       },
     ],
   };
