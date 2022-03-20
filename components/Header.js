@@ -9,7 +9,7 @@ import BoardDetail from "./BoardDetail";
 import { NavBar } from "./NavBar";
 import { Sider } from "./Sider";
 import { BoardBreadcrumb } from "./BoardBreadcrumb";
-import { Home } from "./Home";
+import Home from "./Home";
 
 export const Header = () => {
   // layout by antd

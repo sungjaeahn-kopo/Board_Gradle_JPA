@@ -3,6 +3,11 @@ export async function getUser() {
   return await response.json();
 }
 
+export async function getData() {
+  const response = await fetch("/api/user/signupNumber");
+  return await response.json();
+}
+
 // export async function createUser(data) {
 //   console.log("data!!!!!!!!!!! : " + data);
 //   const response = await fetch(`/user/signIn`, {
