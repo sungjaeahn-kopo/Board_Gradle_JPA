@@ -1,16 +1,24 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts, { charts } from "highcharts";
-import { getData } from "../services/UserService";
+import { getData, getTotalData } from "../services/UserService";
 import { useEffect, useState } from "react";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [totalData, setTotalData] = useState([]);
 
-  useEffect(() => {
-    getData().then((res) => {
-      setData(res);
-    });
-  }, [data]);
+  useEffect(
+    () => {
+      getData().then((res) => {
+        setData(res);
+      });
+      getTotalData().then((res) => {
+        setTotalData(res);
+      });
+    },
+    [data],
+    [totalData]
+  );
 
   const options = {
     chart: {
@@ -66,7 +74,7 @@ const Home = () => {
     },
     series: [
       {
-        data: [data],
+        data: [data, totalData],
       },
     ],
   };
