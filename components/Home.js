@@ -10,7 +10,6 @@ const Home = () => {
     getData().then((res) => {
       setData(res);
     });
-    console.log(data);
   }, [data]);
 
   const options = {

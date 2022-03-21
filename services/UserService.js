@@ -8,6 +8,11 @@ export async function getData() {
   return await response.json();
 }
 
+export async function getTotalData() {
+  const response = await fetch("/api/user/signupNumberTotal");
+  return await response.json();
+}
+
 // export async function createUser(data) {
 //   console.log("data!!!!!!!!!!! : " + data);
 //   const response = await fetch(`/user/signIn`, {
