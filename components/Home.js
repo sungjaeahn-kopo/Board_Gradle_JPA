@@ -1,5 +1,5 @@
 import HighchartsReact from "highcharts-react-official";
-import Highcharts, { charts } from "highcharts";
+import Highcharts from "highcharts";
 import { getData, getTotalData } from "../services/UserService";
 import { useEffect, useState } from "react";
 
