@@ -12,7 +12,6 @@ import { BoardBreadcrumb } from "./BoardBreadcrumb";
 import Home from "./Home";
 
 export const Header = () => {
-  // layout by antd
   const { SubMenu } = Menu;
   const { Content } = Layout;
   const router = useRouter();
