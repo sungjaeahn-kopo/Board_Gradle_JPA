@@ -1,4 +1,4 @@
-import { Table, Tag, Space } from "antd";
+import { Table } from "antd";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { getBoard } from "../services/BoardService";
