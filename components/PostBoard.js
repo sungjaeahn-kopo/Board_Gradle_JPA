@@ -22,7 +22,7 @@ const PostBoard = () => {
     writer: "",
     content: "",
   });
-  // 비구조화 할당
+
   // const { title, writer, content } = inputs;
 
   // antd
